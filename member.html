@@ -1,0 +1,925 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#246b5a">
+  <meta name="description" content="就労継続支援B型 利用予定・欠席連絡・送迎変更・お知らせ・工賃明細">
+  <title>DPRO 就労継続支援B型｜利用者・ご家族</title>
+  <style>
+    :root {
+      --green-950:#103a31;
+      --green-900:#174a3e;
+      --green-800:#1d584a;
+      --green-700:#246b5a;
+      --green-600:#2d7e6b;
+      --green-100:#dce9e3;
+      --green-050:#eef5f1;
+      --cream:#f5f7f2;
+      --white:#fff;
+      --ink:#24312d;
+      --muted:#5e6c67;
+      --line:#d8e1dc;
+      --accent:#d98b3a;
+      --accent-bg:#fff5e8;
+      --danger:#b42318;
+      --danger-bg:#fff1f0;
+      --blue:#245e88;
+      --blue-bg:#edf6fc;
+      --shadow:0 14px 38px rgba(23,74,62,.12);
+      --shadow-sm:0 6px 18px rgba(23,74,62,.09);
+      --radius-xl:24px;
+      --radius-lg:18px;
+      --radius-md:13px;
+      --focus:0 0 0 4px rgba(45,126,107,.2);
+      font-family:system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI","Noto Sans JP",sans-serif;
+      color:var(--ink);
+      background:var(--cream);
+      font-synthesis:none;
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth}
+    body{
+      margin:0;
+      min-width:320px;
+      background:
+        radial-gradient(circle at 8% 0,rgba(220,233,227,.92),transparent 31rem),
+        linear-gradient(180deg,#fbfcfa 0,var(--cream) 38rem);
+      color:var(--ink);
+      font-size:17px;
+      line-height:1.7;
+      overflow-x:hidden;
+    }
+    button,input,select,textarea{font:inherit}
+    button,a{-webkit-tap-highlight-color:transparent}
+    button{cursor:pointer}
+    a{color:var(--green-800)}
+    [hidden]{display:none!important}
+    :focus-visible{outline:0;box-shadow:var(--focus)}
+
+    .site-header{
+      position:sticky;top:0;z-index:80;
+      border-bottom:1px solid rgba(216,225,220,.9);
+      background:rgba(255,255,255,.95);
+      backdrop-filter:blur(14px);
+    }
+    .header-inner{
+      width:min(1180px,calc(100% - 32px));min-height:74px;margin:0 auto;
+      display:flex;align-items:center;justify-content:space-between;gap:16px;
+    }
+    .brand{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);min-width:0}
+    .brand-mark{width:44px;height:44px;flex:0 0 44px;display:grid;place-items:center;border-radius:14px;background:var(--green-700);color:#fff;box-shadow:0 8px 22px rgba(36,107,90,.25)}
+    .brand-mark svg{width:25px;height:25px}
+    .brand-copy{min-width:0}
+    .brand-name{display:block;color:var(--green-900);font-size:17px;font-weight:850;line-height:1.35;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .brand-sub{display:block;color:var(--muted);font-size:12px;font-weight:750;line-height:1.4}
+    .header-actions{display:flex;align-items:center;gap:9px}
+    .header-btn{min-height:44px;padding:8px 14px;display:inline-flex;align-items:center;gap:7px;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--green-800);font-size:14px;font-weight:850;text-decoration:none;white-space:nowrap}
+    .header-btn svg{width:19px;height:19px}
+    .header-btn:hover{background:var(--green-050)}
+
+    .page-shell{width:min(1180px,calc(100% - 32px));margin:32px auto 100px}
+    .status-banner{margin-bottom:20px;padding:14px 17px;border:1px solid var(--line);border-radius:14px;background:#fff;font-weight:750;box-shadow:var(--shadow-sm)}
+    .status-banner[data-tone="error"]{border-color:#f0b8b3;background:var(--danger-bg);color:var(--danger)}
+    .status-banner[data-tone="success"]{border-color:#bdd8cd;background:var(--green-050);color:var(--green-900)}
+    .status-banner[data-tone="warning"]{border-color:#efcea3;background:var(--accent-bg);color:#7a4816}
+
+    .auth-card{width:min(680px,100%);margin:54px auto;padding:34px;border:1px solid var(--line);border-radius:var(--radius-xl);background:#fff;box-shadow:var(--shadow);text-align:center}
+    .auth-icon{width:76px;height:76px;margin:0 auto 20px;display:grid;place-items:center;border-radius:24px;background:var(--green-050);color:var(--green-700)}
+    .auth-icon svg{width:40px;height:40px}
+    .auth-card h1{margin:0;color:var(--green-900);font-size:clamp(26px,4vw,38px);line-height:1.35}
+    .auth-card p{margin:14px auto 0;color:var(--muted);max-width:560px}
+    .auth-actions{margin-top:25px;display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+    .demo-box{margin-top:27px;padding:22px;text-align:left;border:1px solid var(--green-100);border-radius:18px;background:var(--green-050)}
+    .demo-box h2{margin:0 0 7px;color:var(--green-900);font-size:21px}
+    .demo-grid{margin-top:16px;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+
+    .btn{min-height:50px;padding:11px 20px;border:0;border-radius:13px;font-weight:850;display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;transition:transform .15s ease,box-shadow .15s ease,background .15s ease}
+    .btn:hover{transform:translateY(-1px)}
+    .btn-primary{background:var(--green-700);color:#fff;box-shadow:0 8px 20px rgba(36,107,90,.22)}
+    .btn-primary:hover{background:var(--green-800)}
+    .btn-secondary{border:1px solid var(--line);background:#fff;color:var(--green-800)}
+    .btn-danger{border:1px solid #e4aaa5;background:#fff;color:var(--danger)}
+    .btn-full{width:100%}
+    .btn[disabled]{opacity:.55;cursor:not-allowed;transform:none;box-shadow:none}
+
+    label{display:block;color:var(--ink);font-size:14px;font-weight:850}
+    .field{margin-top:13px}
+    input,select,textarea{width:100%;min-height:50px;margin-top:7px;padding:11px 13px;border:1px solid #cbd7d1;border-radius:12px;background:#fff;color:var(--ink)}
+    textarea{min-height:125px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:var(--green-600);outline:0;box-shadow:var(--focus)}
+    .hint{display:block;margin-top:6px;color:var(--muted);font-size:13px;font-weight:600}
+
+    .portal[hidden]{display:none}
+    .welcome{
+      position:relative;overflow:hidden;padding:28px;border-radius:var(--radius-xl);
+      background:linear-gradient(135deg,var(--green-900),var(--green-700));color:#fff;box-shadow:var(--shadow);
+    }
+    .welcome:after{content:"";position:absolute;width:240px;height:240px;right:-70px;top:-110px;border-radius:50%;background:rgba(255,255,255,.08)}
+    .welcome-top{position:relative;z-index:1;display:flex;justify-content:space-between;gap:18px;align-items:flex-start}
+    .eyebrow{margin:0 0 5px;font-size:12px;font-weight:900;letter-spacing:.13em;text-transform:uppercase;opacity:.82}
+    .welcome h1{margin:0;font-size:clamp(27px,4vw,42px);line-height:1.3}
+    .welcome p{margin:10px 0 0;max-width:720px;opacity:.92}
+    .role-badge{position:relative;z-index:1;flex:0 0 auto;padding:8px 13px;border-radius:999px;background:rgba(255,255,255,.16);font-size:13px;font-weight:900}
+    .welcome-actions{position:relative;z-index:1;margin-top:22px;display:flex;gap:10px;flex-wrap:wrap}
+    .welcome-actions .btn{min-height:45px;padding:8px 15px;background:#fff;color:var(--green-900);box-shadow:none}
+
+    .summary-grid{margin-top:20px;display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+    .summary-card{min-height:142px;padding:20px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow-sm)}
+    .summary-card .icon{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:var(--green-050);color:var(--green-700)}
+    .summary-card .icon svg{width:22px;height:22px}
+    .summary-label{margin-top:14px;color:var(--muted);font-size:13px;font-weight:800}
+    .summary-value{margin-top:3px;color:var(--green-900);font-size:21px;font-weight:900;line-height:1.4}
+    .summary-sub{margin-top:3px;color:var(--muted);font-size:13px}
+
+    .portal-layout{margin-top:22px;display:grid;grid-template-columns:230px minmax(0,1fr);gap:20px;align-items:start}
+    .side-nav{position:sticky;top:96px;padding:12px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow-sm)}
+    .nav-btn{width:100%;min-height:50px;padding:10px 12px;border:0;border-radius:12px;background:transparent;color:var(--ink);display:flex;align-items:center;gap:11px;font-weight:850;text-align:left}
+    .nav-btn svg{width:21px;height:21px;color:var(--green-700)}
+    .nav-btn:hover{background:var(--green-050)}
+    .nav-btn.active{background:var(--green-700);color:#fff}
+    .nav-btn.active svg{color:#fff}
+    .nav-count{margin-left:auto;min-width:25px;height:25px;padding:0 7px;border-radius:999px;display:grid;place-items:center;background:var(--accent);color:#fff;font-size:12px}
+    .portal-main{min-width:0}
+    .view{animation:fade .18s ease}
+    @keyframes fade{from{opacity:.45;transform:translateY(4px)}to{opacity:1;transform:none}}
+    .section-head{margin-bottom:16px;display:flex;align-items:flex-end;justify-content:space-between;gap:14px}
+    .section-head h2{margin:0;color:var(--green-900);font-size:clamp(24px,3vw,32px);line-height:1.35}
+    .section-head p{margin:4px 0 0;color:var(--muted)}
+    .section-card{padding:23px;border:1px solid var(--line);border-radius:20px;background:#fff;box-shadow:var(--shadow-sm)}
+    .section-card + .section-card{margin-top:16px}
+    .section-card h3{margin:0;color:var(--green-900);font-size:20px}
+    .card-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+
+    .quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+    .quick-btn{min-height:115px;padding:17px 12px;border:1px solid var(--line);border-radius:16px;background:#fff;color:var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-weight:900;text-align:center;box-shadow:var(--shadow-sm)}
+    .quick-btn:hover{border-color:var(--green-600);background:var(--green-050)}
+    .quick-btn svg{width:31px;height:31px;color:var(--green-700)}
+
+    .list{display:grid;gap:12px}
+    .list-empty{padding:28px;border:1px dashed #bfcdc6;border-radius:16px;background:#fafcfb;color:var(--muted);text-align:center}
+    .schedule-item,.request-item,.wage-item{padding:18px;border:1px solid var(--line);border-radius:16px;background:#fff}
+    .schedule-item{display:grid;grid-template-columns:116px minmax(0,1fr) auto;gap:17px;align-items:center}
+    .date-box{text-align:center;padding:10px;border-radius:14px;background:var(--green-050)}
+    .date-box strong{display:block;color:var(--green-900);font-size:23px;line-height:1.25}
+    .date-box span{font-size:13px;color:var(--muted);font-weight:800}
+    .schedule-title{font-size:18px;font-weight:900;color:var(--green-900)}
+    .schedule-meta{margin-top:4px;color:var(--muted);font-size:14px}
+    .chips{margin-top:9px;display:flex;gap:7px;flex-wrap:wrap}
+    .chip{display:inline-flex;align-items:center;min-height:27px;padding:3px 9px;border-radius:999px;background:var(--green-050);color:var(--green-900);font-size:12px;font-weight:850}
+    .chip.orange{background:var(--accent-bg);color:#7b4b17}
+    .chip.blue{background:var(--blue-bg);color:var(--blue)}
+    .status-pill{padding:7px 11px;border-radius:999px;background:var(--green-050);color:var(--green-900);font-size:13px;font-weight:900;white-space:nowrap}
+    .status-pill.absent,.status-pill.cancelled{background:var(--danger-bg);color:var(--danger)}
+    .status-pill.late,.status-pill.early_leave{background:var(--accent-bg);color:#7b4b17}
+
+    .notice-item{border:1px solid var(--line);border-radius:16px;background:#fff;overflow:hidden}
+    .notice-button{width:100%;padding:18px;border:0;background:#fff;color:var(--ink);display:flex;align-items:flex-start;gap:12px;text-align:left}
+    .notice-dot{width:10px;height:10px;flex:0 0 10px;margin-top:8px;border-radius:50%;background:var(--accent)}
+    .notice-dot.read{background:#bdc8c3}
+    .notice-copy{min-width:0;flex:1}
+    .notice-title{font-weight:900;color:var(--green-900)}
+    .notice-date{color:var(--muted);font-size:13px}
+    .notice-body{padding:0 18px 18px 40px;color:var(--ink);white-space:pre-wrap}
+
+    .form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+    .form-actions{margin-top:20px;display:flex;justify-content:flex-end;gap:10px;flex-wrap:wrap}
+    .inline-alert{margin-top:14px;padding:13px 15px;border-radius:12px;background:var(--accent-bg);color:#704617;font-size:14px;font-weight:700}
+
+    .wage-item{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:16px;align-items:center}
+    .wage-month{font-size:20px;font-weight:900;color:var(--green-900)}
+    .wage-meta{margin-top:5px;color:var(--muted);font-size:14px}
+    .wage-total{text-align:right;color:var(--green-900);font-size:25px;font-weight:950;white-space:nowrap}
+    .wage-breakdown{margin-top:12px;padding-top:12px;border-top:1px solid var(--line);display:grid;grid-template-columns:repeat(4,1fr);gap:10px;color:var(--muted);font-size:13px}
+    .wage-breakdown strong{display:block;color:var(--ink);font-size:15px}
+    .privacy-note{padding:18px;border-radius:16px;background:var(--blue-bg);color:#234e6d}
+
+    .profile-grid{display:grid;grid-template-columns:1fr 1fr;gap:0 20px}
+    .profile-row{padding:15px 0;border-bottom:1px solid var(--line)}
+    .profile-row dt{color:var(--muted);font-size:13px;font-weight:850}
+    .profile-row dd{margin:4px 0 0;color:var(--ink);font-weight:800}
+
+    .loading{position:fixed;inset:0;z-index:200;display:grid;place-items:center;background:rgba(245,247,242,.88);backdrop-filter:blur(5px)}
+    .loading-card{padding:24px 30px;border:1px solid var(--line);border-radius:18px;background:#fff;box-shadow:var(--shadow);text-align:center;font-weight:850;color:var(--green-900)}
+    .spinner{width:38px;height:38px;margin:0 auto 12px;border:4px solid var(--green-100);border-top-color:var(--green-700);border-radius:50%;animation:spin .7s linear infinite}
+    @keyframes spin{to{transform:rotate(360deg)}}
+    .toast{position:fixed;left:50%;bottom:28px;z-index:300;width:min(520px,calc(100% - 32px));padding:15px 18px;transform:translate(-50%,20px);border-radius:14px;background:var(--green-900);color:#fff;box-shadow:var(--shadow);font-weight:800;opacity:0;pointer-events:none;transition:.2s}
+    .toast.show{opacity:1;transform:translate(-50%,0)}
+    .toast.error{background:var(--danger)}
+    .mobile-nav{display:none}
+
+    @media (max-width:900px){
+      .summary-grid{grid-template-columns:repeat(2,1fr)}
+      .portal-layout{grid-template-columns:1fr}
+      .side-nav{display:none}
+      .quick-grid{grid-template-columns:repeat(2,1fr)}
+      .page-shell{margin-bottom:115px}
+      .mobile-nav{position:fixed;left:12px;right:12px;bottom:max(10px,env(safe-area-inset-bottom));z-index:100;display:grid;grid-template-columns:repeat(6,1fr);padding:8px;border:1px solid rgba(216,225,220,.94);border-radius:18px;background:rgba(255,255,255,.96);box-shadow:0 12px 34px rgba(23,74,62,.2);backdrop-filter:blur(15px)}
+      .mobile-nav .nav-btn{min-height:55px;padding:5px 2px;display:flex;flex-direction:column;gap:2px;justify-content:center;text-align:center;font-size:10px}
+      .mobile-nav .nav-btn svg{width:20px;height:20px}
+      .mobile-nav .nav-count{position:absolute;margin:0;top:2px;right:6px;min-width:18px;height:18px;font-size:10px}
+    }
+    @media (max-width:620px){
+      body{font-size:16px;line-height:1.72}
+      .header-inner{width:min(100% - 22px,1180px);min-height:68px}
+      .brand-mark{width:40px;height:40px;flex-basis:40px;border-radius:12px}
+      .brand-name{font-size:15px}
+      .brand-sub{font-size:10px}
+      .header-btn{width:42px;min-height:42px;padding:0;justify-content:center;border-radius:13px}
+      .header-btn span{display:none}
+      .page-shell{width:min(100% - 22px,1180px);margin-top:20px}
+      .auth-card{margin:28px auto;padding:25px 19px}
+      .demo-grid,.form-grid,.profile-grid{grid-template-columns:1fr}
+      .welcome{padding:23px 20px}
+      .welcome-top{display:block}
+      .role-badge{display:inline-flex;margin-top:13px}
+      .summary-grid{gap:10px}
+      .summary-card{min-height:125px;padding:15px}
+      .summary-value{font-size:18px}
+      .section-card{padding:18px 15px}
+      .quick-grid{gap:9px}
+      .quick-btn{min-height:105px;padding:13px 7px;font-size:14px}
+      .schedule-item{grid-template-columns:82px minmax(0,1fr);gap:12px}
+      .schedule-item>.status-pill{grid-column:2;justify-self:start}
+      .date-box strong{font-size:19px}
+      .wage-item{grid-template-columns:1fr}
+      .wage-total{text-align:left}
+      .wage-breakdown{grid-template-columns:repeat(2,1fr)}
+      .mobile-nav{left:7px;right:7px;padding:6px 4px}
+      .mobile-nav .nav-btn{border-radius:10px}
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="利用相談画面へ戻る">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M12 21v-8m0 0c-3.4 0-6-2.2-6-5.5C9.5 7.5 12 9.7 12 13Zm0 0c3.4 0 6-2.2 6-5.5-3.5 0-6 2.2-6 5.5ZM5 21h14" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name" id="headerFacilityName">DPRO 就労継続支援B型事業所</span>
+          <span class="brand-sub">利用者・ご家族向け</span>
+        </span>
+      </a>
+      <div class="header-actions">
+        <a class="header-btn" href="index.html">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 12 12 5l8 7M6.5 10.5V20h11v-9.5M10 20v-5h4v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>利用相談</span>
+        </a>
+        <button class="header-btn" id="logoutButton" type="button" hidden>
+          <svg viewBox="0 0 24 24" fill="none"><path d="M14 8V5H5v14h9v-3M11 12h9m0 0-3-3m3 3-3 3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <span>ログアウト</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="page-shell">
+    <div class="status-banner" id="statusBanner" hidden></div>
+
+    <section class="auth-card" id="authScreen">
+      <div class="auth-icon" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none"><path d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 7c.8-3.1 3.2-5 7-5s6.2 1.9 7 5M18 9h3m-1.5-1.5v3" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+      </div>
+      <h1>利用者・ご家族向け画面</h1>
+      <p id="authMessage">LINEで本人確認を行い、利用予定やお知らせを表示します。</p>
+      <div class="auth-actions" id="authActions">
+        <a class="btn btn-secondary" href="index.html">利用相談画面へ</a>
+      </div>
+
+      <div class="demo-box" id="demoBox" hidden>
+        <h2>デモ画面を確認する</h2>
+        <p>デモ事業所のサンプル情報です。本番の利用者情報には接続しません。</p>
+        <div class="demo-grid">
+          <div class="field">
+            <label for="demoUser">デモ利用者</label>
+            <select id="demoUser">
+              <option value="BT-000001">山田 太郎（送迎あり）</option>
+              <option value="BT-000002">佐々木 花子</option>
+              <option value="BT-000003">鈴木 一郎（送迎あり）</option>
+            </select>
+          </div>
+          <div class="field">
+            <label for="demoRole">閲覧する立場</label>
+            <select id="demoRole">
+              <option value="self">本人</option>
+              <option value="family">家族</option>
+              <option value="guardian">後見人</option>
+              <option value="supporter">支援者</option>
+            </select>
+          </div>
+        </div>
+        <button class="btn btn-primary btn-full" id="demoLoginButton" type="button" style="margin-top:18px">デモ画面を開く</button>
+      </div>
+
+      <div class="demo-box" id="linkSelection" hidden>
+        <h2>表示する利用者を選択</h2>
+        <p>このLINEアカウントに承認済みの利用者が複数あります。</p>
+        <div id="linkList" class="list" style="margin-top:14px"></div>
+      </div>
+    </section>
+
+    <section class="portal" id="portal" hidden>
+      <div class="welcome">
+        <div class="welcome-top">
+          <div>
+            <p class="eyebrow">Member Portal</p>
+            <h1><span id="welcomeName">利用者</span>さんのページ</h1>
+            <p id="welcomeSummary">利用予定、送迎、お知らせを確認できます。</p>
+          </div>
+          <span class="role-badge" id="roleBadge">本人として閲覧</span>
+        </div>
+        <div class="welcome-actions">
+          <button class="btn" type="button" data-view-target="contact" data-contact-type="absence">欠席を連絡</button>
+          <button class="btn" type="button" data-view-target="contact" data-contact-type="transport_change">送迎を変更</button>
+          <button class="btn" type="button" data-view-target="contact" data-contact-type="consultation">相談する</button>
+        </div>
+      </div>
+
+      <div class="summary-grid" id="summaryGrid"></div>
+
+      <div class="portal-layout">
+        <nav class="side-nav" aria-label="利用者画面メニュー">
+          <button class="nav-btn active" type="button" data-view="home"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12 12 5l8 7M6.5 10.5V20h11v-9.5M10 20v-5h4v5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>ホーム</button>
+          <button class="nav-btn" type="button" data-view="schedule"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3v3m10-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>利用予定</button>
+          <button class="nav-btn" type="button" data-view="contact"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h14v12H9l-4 4V4Zm4 5h6m-6 3h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>連絡・相談</button>
+          <button class="nav-btn" type="button" data-view="notices"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 0 1 12 0v4l2 3H4l2-3V9Zm4 10h4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>お知らせ<span class="nav-count" id="noticeCount" hidden>0</span></button>
+          <button class="nav-btn" type="button" data-view="wages"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5h14v14H5V5Zm3 4h8m-8 3h8m-8 3h5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>工賃明細</button>
+          <button class="nav-btn" type="button" data-view="profile"><svg viewBox="0 0 24 24" fill="none"><path d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 7c.8-3.1 3.2-5 7-5s6.2 1.9 7 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>登録情報</button>
+        </nav>
+
+        <div class="portal-main">
+          <section class="view" id="view-home"></section>
+          <section class="view" id="view-schedule" hidden></section>
+          <section class="view" id="view-contact" hidden></section>
+          <section class="view" id="view-notices" hidden></section>
+          <section class="view" id="view-wages" hidden></section>
+          <section class="view" id="view-profile" hidden></section>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <nav class="mobile-nav" id="mobileNav" aria-label="スマートフォンメニュー" hidden>
+    <button class="nav-btn active" type="button" data-view="home"><svg viewBox="0 0 24 24" fill="none"><path d="M4 12 12 5l8 7M6.5 10.5V20h11v-9.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>ホーム</button>
+    <button class="nav-btn" type="button" data-view="schedule"><svg viewBox="0 0 24 24" fill="none"><path d="M7 3v3m10-3v3M4 9h16M5 5h14v15H4V6a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>予定</button>
+    <button class="nav-btn" type="button" data-view="contact"><svg viewBox="0 0 24 24" fill="none"><path d="M5 4h14v12H9l-4 4V4Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>連絡</button>
+    <button class="nav-btn" type="button" data-view="notices"><svg viewBox="0 0 24 24" fill="none"><path d="M6 9a6 6 0 0 1 12 0v4l2 3H4l2-3V9Z" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>お知らせ<span class="nav-count" id="mobileNoticeCount" hidden>0</span></button>
+    <button class="nav-btn" type="button" data-view="wages"><svg viewBox="0 0 24 24" fill="none"><path d="M5 5h14v14H5V5Zm3 4h8m-8 3h8" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>工賃</button>
+    <button class="nav-btn" type="button" data-view="profile"><svg viewBox="0 0 24 24" fill="none"><path d="M12 13a4 4 0 1 0 0-8 4 4 0 0 0 0 8Zm-7 7c.8-3.1 3.2-5 7-5s6.2 1.9 7 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>情報</button>
+  </nav>
+
+  <div class="loading" id="loading" hidden><div class="loading-card"><div class="spinner"></div><span id="loadingText">読み込んでいます</span></div></div>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+  <script src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+  <script src="config.js"></script>
+  <script>
+    "use strict";
+
+    const CONFIG = window.DPRO_BTYPE_CONFIG || {};
+    const SESSION_KEY = "dpro_btype_member_session_v1";
+    const state = {
+      facility: null,
+      data: null,
+      sessionToken: null,
+      sessionRole: null,
+      demo: false,
+      idToken: null,
+      currentView: "home",
+      pendingContactType: null,
+    };
+
+    const $ = (id) => document.getElementById(id);
+    const authScreen = $("authScreen");
+    const portal = $("portal");
+    const loading = $("loading");
+    const toast = $("toast");
+
+    document.addEventListener("DOMContentLoaded", init);
+
+    async function init() {
+      bindStaticEvents();
+      await loadFacility();
+
+      const restored = restoreSession();
+      if (restored) {
+        try {
+          await loadPortal();
+          return;
+        } catch (error) {
+          clearSession();
+          showStatus(error.message || "ログイン情報を確認できませんでした。", "warning");
+        }
+      }
+
+      const params = new URLSearchParams(location.search);
+      if (params.get("demo") === "1") {
+        showDemoLogin();
+        return;
+      }
+
+      if (CONFIG.LIFF_ID) {
+        await startLiffLogin();
+      } else {
+        showWebOnlyMessage();
+      }
+    }
+
+    function bindStaticEvents() {
+      $("demoLoginButton").addEventListener("click", loginDemo);
+      $("logoutButton").addEventListener("click", logout);
+      document.addEventListener("click", (event) => {
+        const viewButton = event.target.closest("[data-view]");
+        if (viewButton) {
+          switchView(viewButton.dataset.view);
+          return;
+        }
+        const targetButton = event.target.closest("[data-view-target]");
+        if (targetButton) {
+          state.pendingContactType = targetButton.dataset.contactType || null;
+          switchView(targetButton.dataset.viewTarget);
+        }
+      });
+    }
+
+    async function loadFacility() {
+      try {
+        const response = await apiFetch(`/facility?facility_code=${encodeURIComponent(CONFIG.FACILITY_CODE)}`);
+        state.facility = response.facility;
+        const name = response.facility?.facility_name || "DPRO 就労継続支援B型事業所";
+        $("headerFacilityName").textContent = name;
+      } catch (error) {
+        showStatus("事業所情報を取得できませんでした。時間をおいて再度お試しください。", "error");
+      }
+    }
+
+    function showWebOnlyMessage() {
+      $("authMessage").textContent = "この画面は通常、LINEのメニューから開きます。現在はデモ画面で機能を確認できます。";
+      $("authActions").innerHTML = `
+        <a class="btn btn-primary" href="member.html?demo=1">デモ画面を見る</a>
+        <a class="btn btn-secondary" href="index.html">利用相談画面へ</a>`;
+    }
+
+    function showDemoLogin() {
+      $("authMessage").textContent = "本人・家族・後見人・支援者で、表示内容がどう変わるか確認できます。";
+      $("demoBox").hidden = false;
+      const configured = CONFIG.DEMO_MEMBER_USER_CODE;
+      if (configured) $("demoUser").value = configured;
+    }
+
+    async function startLiffLogin() {
+      setLoading(true, "LINEで本人確認中です");
+      try {
+        await liff.init({ liffId: CONFIG.LIFF_ID });
+        if (!liff.isLoggedIn()) {
+          liff.login({ redirectUri: location.href });
+          return;
+        }
+        state.idToken = liff.getIDToken();
+        if (!state.idToken) throw new Error("LINE本人確認情報を取得できませんでした。");
+        const links = await apiFetch("/member/links", {
+          method: "POST",
+          body: { facility_code: CONFIG.FACILITY_CODE, id_token: state.idToken },
+        });
+        if (!links.linked || !Array.isArray(links.links) || links.links.length === 0) {
+          $("authMessage").textContent = "LINE連携が承認されていません。事業所へ氏名と電話番号をお伝えください。";
+          showStatus("LINE連携の承認後に利用できます。内部の支援記録はこの画面には表示されません。", "warning");
+          return;
+        }
+        if (links.links.length === 1) {
+          await openLineSession(links.links[0]);
+        } else {
+          renderLinkSelection(links.links);
+        }
+      } catch (error) {
+        showStatus(error.message || "LINEの本人確認に失敗しました。", "error");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    function renderLinkSelection(links) {
+      $("linkSelection").hidden = false;
+      $("linkList").innerHTML = links.map((link) => `
+        <button type="button" class="btn btn-secondary btn-full link-choice" data-user-id="${escapeHtml(link.user_id)}">
+          ${escapeHtml(link.full_name)}（${escapeHtml(roleLabel(link.link_role))}）
+        </button>`).join("");
+      $("linkList").querySelectorAll(".link-choice").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const link = links.find((item) => item.user_id === button.dataset.userId);
+          if (link) await openLineSession(link);
+        });
+      });
+    }
+
+    async function openLineSession(link) {
+      setLoading(true, "利用者情報を確認しています");
+      try {
+        const result = await apiFetch("/member/session", {
+          method: "POST",
+          body: { facility_code: CONFIG.FACILITY_CODE, id_token: state.idToken, user_id: link.user_id },
+        });
+        saveSession(result.session_token, result.session_role, false);
+        await loadPortal();
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    async function loginDemo() {
+      setLoading(true, "デモ画面を準備しています");
+      try {
+        const result = await apiFetch("/member/demo-session", {
+          method: "POST",
+          body: {
+            facility_code: CONFIG.FACILITY_CODE,
+            user_code: $("demoUser").value,
+            demo_role: $("demoRole").value,
+          },
+        });
+        saveSession(result.session_token, result.session_role, true);
+        await loadPortal();
+      } catch (error) {
+        showStatus(error.message || "デモ画面を開けませんでした。", "error");
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    function saveSession(token, role, demo) {
+      state.sessionToken = token;
+      state.sessionRole = role;
+      state.demo = demo;
+      sessionStorage.setItem(SESSION_KEY, JSON.stringify({ token, role, demo, facility: CONFIG.FACILITY_CODE }));
+    }
+
+    function restoreSession() {
+      try {
+        const saved = JSON.parse(sessionStorage.getItem(SESSION_KEY) || "null");
+        if (!saved || saved.facility !== CONFIG.FACILITY_CODE || !saved.token) return false;
+        state.sessionToken = saved.token;
+        state.sessionRole = saved.role;
+        state.demo = Boolean(saved.demo);
+        return true;
+      } catch {
+        return false;
+      }
+    }
+
+    function clearSession() {
+      state.sessionToken = null;
+      state.sessionRole = null;
+      state.demo = false;
+      state.data = null;
+      sessionStorage.removeItem(SESSION_KEY);
+    }
+
+    async function loadPortal() {
+      setLoading(true, "利用予定を読み込んでいます");
+      try {
+        const data = await apiFetch(`/member/portal?facility_code=${encodeURIComponent(CONFIG.FACILITY_CODE)}`, {
+          auth: true,
+        });
+        state.data = data;
+        state.sessionRole = data.session?.role || state.sessionRole;
+        authScreen.hidden = true;
+        portal.hidden = false;
+        $("mobileNav").hidden = false;
+        $("logoutButton").hidden = false;
+        renderPortal();
+        switchView(state.currentView, false);
+        clearStatus();
+      } finally {
+        setLoading(false);
+      }
+    }
+
+    function renderPortal() {
+      const data = state.data;
+      $("welcomeName").textContent = data.user?.full_name || "利用者";
+      $("welcomeSummary").textContent = data.user?.public_summary || "利用予定、送迎、お知らせを確認できます。";
+      $("roleBadge").textContent = `${roleLabel(data.session?.role)}として閲覧${state.demo ? "（デモ）" : ""}`;
+      renderSummary();
+      renderHome();
+      renderSchedule();
+      renderContact();
+      renderNotices();
+      renderWages();
+      renderProfile();
+    }
+
+    function renderSummary() {
+      const schedules = futureSchedules();
+      const next = schedules[0];
+      const unread = (state.data.notices || []).filter((item) => !item.is_read).length;
+      const openRequests = (state.data.requests || []).filter((item) => ["new", "acknowledged"].includes(item.response_status)).length
+        + (state.data.consultations || []).filter((item) => ["new", "acknowledged", "scheduled"].includes(item.request_status)).length;
+      const transport = next ? [next.transport_outbound, next.transport_return].filter(Boolean).length : 0;
+      const cards = [
+        { icon:"calendar", label:"次の利用予定", value: next ? formatDateShort(next.service_date) : "予定なし", sub:next ? `${next.planned_start_time || "--:--"}〜${next.planned_end_time || "--:--"}` : "事業所へご確認ください" },
+        { icon:"car", label:"次回の送迎", value: transport ? "送迎あり" : "送迎なし", sub:transport === 2 ? "行き・帰り" : transport === 1 ? "片道" : "" },
+        { icon:"bell", label:"未読のお知らせ", value:`${unread}件`, sub:unread ? "内容をご確認ください" : "すべて確認済み" },
+        { icon:"message", label:"確認中の連絡", value:`${openRequests}件`, sub:openRequests ? "職員が順次確認します" : "未対応の連絡なし" },
+      ];
+      $("summaryGrid").innerHTML = cards.map((card) => `
+        <article class="summary-card">
+          <div class="icon">${iconSvg(card.icon)}</div>
+          <div class="summary-label">${escapeHtml(card.label)}</div>
+          <div class="summary-value">${escapeHtml(card.value)}</div>
+          <div class="summary-sub">${escapeHtml(card.sub)}</div>
+        </article>`).join("");
+      updateNoticeCounts(unread);
+    }
+
+    function renderHome() {
+      const next = futureSchedules()[0];
+      const recentNotices = (state.data.notices || []).slice(0, 3);
+      $("view-home").innerHTML = `
+        <div class="section-head"><div><h2>ホーム</h2><p>次の利用予定と、よく使う連絡です。</p></div></div>
+        <div class="section-card">
+          <h3>かんたん連絡</h3>
+          <div class="quick-grid" style="margin-top:16px">
+            ${quickButton("absence","欠席を連絡","calendar-x")}
+            ${quickButton("late","遅刻を連絡","clock")}
+            ${quickButton("early_leave","早退を連絡","exit")}
+            ${quickButton("transport_change","送迎を変更","car")}
+          </div>
+        </div>
+        <div class="section-card">
+          <div class="card-head"><h3>次の利用予定</h3><button class="btn btn-secondary" type="button" data-view-target="schedule">一覧を見る</button></div>
+          <div style="margin-top:15px">${next ? scheduleItem(next) : emptyBox("今後の利用予定は登録されていません。")}</div>
+        </div>
+        <div class="section-card">
+          <div class="card-head"><h3>新しいお知らせ</h3><button class="btn btn-secondary" type="button" data-view-target="notices">すべて見る</button></div>
+          <div class="list" style="margin-top:15px">${recentNotices.length ? recentNotices.map(noticeItem).join("") : emptyBox("現在のお知らせはありません。")}</div>
+        </div>`;
+      bindNoticeButtons($("view-home"));
+    }
+
+    function renderSchedule() {
+      const schedules = [...(state.data.schedules || [])].sort((a,b) => a.service_date.localeCompare(b.service_date));
+      const transportByDate = new Map();
+      (state.data.transport || []).forEach((item) => {
+        const list = transportByDate.get(item.scheduled_date) || [];
+        list.push(item);transportByDate.set(item.scheduled_date,list);
+      });
+      $("view-schedule").innerHTML = `
+        <div class="section-head"><div><h2>利用予定</h2><p>利用時間、送迎、出欠状況を確認できます。</p></div></div>
+        <div class="section-card">
+          <div class="list">${schedules.length ? schedules.map((item) => scheduleItem(item, transportByDate.get(item.service_date))).join("") : emptyBox("表示期間内の利用予定はありません。")}</div>
+        </div>`;
+    }
+
+    function renderContact() {
+      const scheduleOptions = futureSchedules().map((item) => `<option value="${escapeHtml(item.service_date)}">${escapeHtml(formatDateLong(item.service_date))}</option>`).join("");
+      const requests = (state.data.requests || []).slice(0, 8);
+      const consultations = (state.data.consultations || []).slice(0, 5);
+      $("view-contact").innerHTML = `
+        <div class="section-head"><div><h2>連絡・相談</h2><p>欠席・遅刻・早退・送迎変更を事業所へ送信します。</p></div></div>
+        <div class="section-card">
+          <h3>利用日の連絡</h3>
+          <form id="contactForm" novalidate>
+            <div class="form-grid">
+              <div class="field"><label for="contactDate">利用日</label><select id="contactDate" required><option value="">選択してください</option>${scheduleOptions}</select></div>
+              <div class="field"><label for="contactType">連絡内容</label><select id="contactType" required>
+                <option value="absence">欠席</option><option value="late">遅刻</option><option value="early_leave">早退</option><option value="transport_change">送迎変更</option><option value="other">その他</option>
+              </select></div>
+            </div>
+            <div class="form-grid" id="timeFields">
+              <div class="field" id="arrivalField" hidden><label for="expectedArrival">到着予定時刻</label><input type="time" id="expectedArrival" step="1800"></div>
+              <div class="field" id="departureField" hidden><label for="expectedDeparture">早退予定時刻</label><input type="time" id="expectedDeparture" step="1800"></div>
+            </div>
+            <div id="transportFields" hidden>
+              <div class="form-grid">
+                <div class="field"><label for="outboundAction">行きの送迎</label><select id="outboundAction"><option value="keep">変更なし</option><option value="use">利用する</option><option value="not_use">利用しない</option><option value="change">場所を変更</option></select></div>
+                <div class="field"><label for="returnAction">帰りの送迎</label><select id="returnAction"><option value="keep">変更なし</option><option value="use">利用する</option><option value="not_use">利用しない</option><option value="change">場所を変更</option></select></div>
+              </div>
+              <div class="form-grid">
+                <div class="field"><label for="pickupLocation">乗車場所の変更</label><input id="pickupLocation" maxlength="300" placeholder="変更がある場合のみ入力"></div>
+                <div class="field"><label for="dropoffLocation">降車場所の変更</label><input id="dropoffLocation" maxlength="300" placeholder="変更がある場合のみ入力"></div>
+              </div>
+            </div>
+            <div class="field"><label for="contactReason">理由・連絡事項</label><textarea id="contactReason" maxlength="1000" placeholder="体調や送迎変更の内容など、職員へ伝えることを入力してください。"></textarea></div>
+            <div class="inline-alert">送信した内容は職員が確認します。緊急時や当日の急な変更は、事業所へ電話でもご連絡ください。</div>
+            <div class="form-actions"><button class="btn btn-primary" type="submit">事業所へ連絡する</button></div>
+          </form>
+        </div>
+        <div class="section-card">
+          <h3>個別に相談する</h3>
+          <form id="consultationForm" novalidate>
+            <div class="form-grid">
+              <div class="field"><label for="consultCategory">相談の種類</label><select id="consultCategory"><option value="general">一般的な相談</option><option value="support">支援内容</option><option value="family">家族からの相談</option><option value="wage">工賃</option><option value="transport">送迎</option><option value="schedule">利用予定</option><option value="other">その他</option></select></div>
+              <div class="field"><label for="consultMethod">希望する連絡方法</label><select id="consultMethod"><option value="phone">電話</option><option value="line">LINE</option><option value="in_person">面談</option><option value="email">メール</option></select></div>
+            </div>
+            <div class="form-grid"><div class="field"><label for="consultDate">希望日（任意）</label><input type="date" id="consultDate"></div><div class="field"><label for="consultTime">希望時間（任意）</label><input type="time" id="consultTime" step="1800"></div></div>
+            <div class="field"><label for="consultMessage">相談内容</label><textarea id="consultMessage" maxlength="2000" required placeholder="相談したい内容を入力してください。"></textarea></div>
+            <div class="form-actions"><button class="btn btn-primary" type="submit">相談を送信する</button></div>
+          </form>
+        </div>
+        <div class="section-card"><h3>送信履歴</h3><div class="list" style="margin-top:15px">${renderRequestHistory(requests,consultations)}</div></div>`;
+
+      const contactType = $("contactType");
+      contactType.value = state.pendingContactType && state.pendingContactType !== "consultation" ? state.pendingContactType : "absence";
+      updateContactFields();
+      contactType.addEventListener("change", updateContactFields);
+      $("contactForm").addEventListener("submit", submitContact);
+      $("consultationForm").addEventListener("submit", submitConsultation);
+      const min = state.data.today;
+      $("consultDate").min = min;
+      if (state.pendingContactType === "consultation") $("consultMessage").focus();
+      state.pendingContactType = null;
+    }
+
+    function updateContactFields() {
+      const type = $("contactType").value;
+      $("arrivalField").hidden = type !== "late";
+      $("departureField").hidden = type !== "early_leave";
+      $("transportFields").hidden = type !== "transport_change";
+    }
+
+    async function submitContact(event) {
+      event.preventDefault();
+      const type = $("contactType").value;
+      const date = $("contactDate").value;
+      if (!date) return showToast("利用日を選択してください。", true);
+      if (type === "late" && !$("expectedArrival").value) return showToast("到着予定時刻を選択してください。", true);
+      if (type === "early_leave" && !$("expectedDeparture").value) return showToast("早退予定時刻を選択してください。", true);
+      setLoading(true, "連絡を送信しています");
+      try {
+        const result = await apiFetch("/member/contact", {
+          method:"POST",auth:true,idempotencyKey:crypto.randomUUID(),
+          body:{
+            facility_code:CONFIG.FACILITY_CODE,service_date:date,contact_type:type,
+            reason:$("contactReason").value,expected_arrival_time:$("expectedArrival").value || null,
+            expected_departure_time:$("expectedDeparture").value || null,
+            request_detail:type === "transport_change" ? {
+              outbound_action:$("outboundAction").value,return_action:$("returnAction").value,
+              pickup_location:$("pickupLocation").value,dropoff_location:$("dropoffLocation").value,
+            } : {},
+          },
+        });
+        showToast(result.message || "連絡を送信しました。");
+        await loadPortal();
+        switchView("contact", false);
+      } catch(error){showToast(error.message || "送信できませんでした。",true)}
+      finally{setLoading(false)}
+    }
+
+    async function submitConsultation(event) {
+      event.preventDefault();
+      const message = $("consultMessage").value.trim();
+      if (!message) return showToast("相談内容を入力してください。", true);
+      setLoading(true,"相談を送信しています");
+      try{
+        const result=await apiFetch("/member/consultation",{
+          method:"POST",auth:true,idempotencyKey:crypto.randomUUID(),
+          body:{facility_code:CONFIG.FACILITY_CODE,category:$("consultCategory").value,preferred_contact_method:$("consultMethod").value,preferred_date:$("consultDate").value || null,preferred_time:$("consultTime").value || null,message},
+        });
+        showToast(result.message || "相談を送信しました。");
+        await loadPortal();switchView("contact",false);
+      }catch(error){showToast(error.message || "送信できませんでした。",true)}
+      finally{setLoading(false)}
+    }
+
+    function renderNotices() {
+      const notices = state.data.notices || [];
+      $("view-notices").innerHTML = `
+        <div class="section-head"><div><h2>お知らせ</h2><p>事業所からの連絡です。開くと既読になります。</p></div></div>
+        <div class="section-card"><div class="list">${notices.length ? notices.map(noticeItem).join("") : emptyBox("現在のお知らせはありません。")}</div></div>`;
+      bindNoticeButtons($("view-notices"));
+    }
+
+    function noticeItem(item) {
+      return `<article class="notice-item">
+        <button class="notice-button" type="button" data-notice-id="${escapeHtml(item.notice_id)}" aria-expanded="false">
+          <span class="notice-dot ${item.is_read ? "read" : ""}"></span>
+          <span class="notice-copy"><span class="notice-title">${escapeHtml(item.title)}</span><span class="notice-date">${escapeHtml(formatDateTime(item.publish_from))}</span></span>
+        </button>
+        <div class="notice-body" hidden>${escapeHtml(item.body)}</div>
+      </article>`;
+    }
+
+    function bindNoticeButtons(root) {
+      root.querySelectorAll("[data-notice-id]").forEach((button) => {
+        button.addEventListener("click", async () => {
+          const body = button.closest(".notice-item").querySelector(".notice-body");
+          const opening = body.hidden;
+          body.hidden = !opening;button.setAttribute("aria-expanded", String(opening));
+          if (opening) await markNoticeRead(button.dataset.noticeId);
+        });
+      });
+    }
+
+    async function markNoticeRead(noticeId) {
+      const notice = (state.data.notices || []).find((item) => item.notice_id === noticeId);
+      if (!notice || notice.is_read) return;
+      try {
+        await apiFetch("/member/notice-read",{method:"POST",auth:true,body:{facility_code:CONFIG.FACILITY_CODE,notice_id:noticeId}});
+        notice.is_read=true;renderSummary();
+        document.querySelectorAll(`[data-notice-id="${CSS.escape(noticeId)}"] .notice-dot`).forEach((dot)=>dot.classList.add("read"));
+      } catch(error){showToast(error.message || "既読情報を更新できませんでした。",true)}
+    }
+
+    function renderWages() {
+      const access = Boolean(state.data.session?.wage_access);
+      const wages = state.data.wages || [];
+      if (!access) {
+        $("view-wages").innerHTML = `<div class="section-head"><div><h2>工賃明細</h2><p>閲覧権限に応じて表示します。</p></div></div><div class="section-card"><div class="privacy-note"><strong>工賃額は表示していません。</strong><br>工賃は本人または承認済みの後見人だけが閲覧できます。一般のご家族・支援者には表示されません。</div></div>`;
+        return;
+      }
+      $("view-wages").innerHTML = `
+        <div class="section-head"><div><h2>工賃明細</h2><p>確定済みまたは支払済みの明細だけを表示します。</p></div></div>
+        <div class="section-card"><div class="privacy-note">下書き・計算中の工賃は表示されません。金額について不明点がある場合は「連絡・相談」からお問い合わせください。</div><div class="list" style="margin-top:15px">${wages.length ? wages.map(wageItem).join("") : emptyBox("現在、表示できる確定工賃明細はありません。")}</div></div>`;
+    }
+
+    function wageItem(item) {
+      return `<article class="wage-item"><div><div class="wage-month">${item.target_year}年${item.target_month}月</div><div class="wage-meta">利用 ${number(item.attendance_days)}日・作業 ${formatMinutes(item.work_minutes)}</div><div class="wage-breakdown"><span>基本<strong>${yen(item.base_amount)}</strong></span><span>出来高<strong>${yen(item.piecework_amount)}</strong></span><span>調整<strong>${yen(item.adjustment_amount)}</strong></span><span>控除<strong>${yen(item.deduction_amount)}</strong></span></div></div><div><div class="wage-total">${yen(item.total_amount)}</div><span class="status-pill">${item.period_status === "paid" ? "支払済み" : "確定"}</span></div></article>`;
+    }
+
+    function renderProfile() {
+      const user=state.data.user || {};const facility=state.data.facility || {};
+      $("view-profile").innerHTML=`
+        <div class="section-head"><div><h2>登録情報</h2><p>この画面には、利用者向けに必要な情報だけを表示します。</p></div></div>
+        <div class="section-card"><dl class="profile-grid">
+          ${profileRow("利用者名",user.full_name)}${profileRow("利用者番号",user.user_code)}
+          ${profileRow("利用状態",serviceStatusLabel(user.service_status))}${profileRow("閲覧区分",roleLabel(state.data.session?.role))}
+          ${profileRow("通常の利用時間",`${user.regular_start_time || "未設定"}〜${user.regular_end_time || "未設定"}`)}${profileRow("送迎の基本設定",user.transport_required ? "利用あり" : "利用なし")}
+          ${profileRow("事業所",facility.facility_name)}${profileRow("事業所電話",facility.phone || "未設定")}
+        </dl><div class="privacy-note" style="margin-top:20px">診断名、服薬、支援記録、職員の内部メモ、事故記録などは、この利用者・家族画面には表示しません。</div></div>`;
+    }
+
+    function switchView(view, scroll=true) {
+      state.currentView=view;
+      document.querySelectorAll(".view").forEach((section)=>section.hidden=section.id!==`view-${view}`);
+      document.querySelectorAll("[data-view]").forEach((button)=>button.classList.toggle("active",button.dataset.view===view));
+      if (view === "contact" && state.data) renderContact();
+      if (scroll) window.scrollTo({top:portal.offsetTop-82,behavior:"smooth"});
+    }
+
+    async function logout() {
+      const token=state.sessionToken;
+      const wasDemo=state.demo;
+      clearSession();
+      if(token){try{await apiFetch("/member/logout",{method:"POST",token,body:{facility_code:CONFIG.FACILITY_CODE}})}catch{}}
+      location.href=wasDemo?"member.html?demo=1":"member.html";
+    }
+
+    async function apiFetch(path, options={}) {
+      const headers={"Content-Type":"application/json"};
+      const token=options.token || state.sessionToken;
+      if(options.auth || options.token) headers.Authorization=`Bearer ${token}`;
+      if(options.idempotencyKey) headers["Idempotency-Key"]=options.idempotencyKey;
+      const response=await fetch(`${String(CONFIG.API_BASE_URL||"").replace(/\/+$/,"")}${path}`,{
+        method:options.method || "GET",headers,
+        ...(options.body!==undefined?{body:JSON.stringify(options.body)}:{}),
+      });
+      let data=null;try{data=await response.json()}catch{data=null}
+      if(!response.ok || !data || data.ok!==true){
+        if(data?.error==="MEMBER_SESSION_INVALID" || response.status===401) clearSession();
+        throw new Error(data?.message || `通信エラー（${response.status}）`);
+      }
+      return data;
+    }
+
+    function futureSchedules(){const today=state.data?.today || localDate();return (state.data?.schedules || []).filter((item)=>item.service_date>=today && item.plan_status!=="cancelled").sort((a,b)=>a.service_date.localeCompare(b.service_date))}
+    function quickButton(type,label,icon){return `<button class="quick-btn" type="button" data-view-target="contact" data-contact-type="${type}">${iconSvg(icon)}<span>${label}</span></button>`}
+    function scheduleItem(item,transport=[]){
+      const status=item.attendance_status || item.plan_status;const chips=[];
+      if(item.service_mode!=="facility")chips.push(`<span class="chip blue">${escapeHtml(serviceModeLabel(item.service_mode))}</span>`);
+      if(item.transport_outbound)chips.push('<span class="chip">行き送迎</span>');if(item.transport_return)chips.push('<span class="chip">帰り送迎</span>');if(item.lunch_required)chips.push('<span class="chip orange">昼食あり</span>');
+      if(transport?.length){transport.forEach((t)=>chips.push(`<span class="chip blue">${t.direction==="outbound"?"行き":"帰り"}：${escapeHtml(transportStatusLabel(t.passenger_status))}</span>`))}
+      return `<article class="schedule-item"><div class="date-box"><strong>${escapeHtml(formatDay(item.service_date))}</strong><span>${escapeHtml(formatWeekday(item.service_date))}</span></div><div><div class="schedule-title">${escapeHtml(formatDateLong(item.service_date))}</div><div class="schedule-meta">${escapeHtml(item.planned_start_time || "--:--")}〜${escapeHtml(item.planned_end_time || "--:--")}</div><div class="chips">${chips.join("")}</div></div><span class="status-pill ${escapeHtml(status||"")}">${escapeHtml(attendanceLabel(status))}</span></article>`;
+    }
+    function renderRequestHistory(requests,consultations){const combined=[...requests.map((r)=>({...r,kind:"contact"})),...consultations.map((r)=>({...r,kind:"consult"}))].sort((a,b)=>String(b.created_at).localeCompare(String(a.created_at)));if(!combined.length)return emptyBox("まだ送信履歴はありません。");return combined.map((item)=>`<article class="request-item"><div class="card-head"><strong>${escapeHtml(item.kind==="contact"?contactTypeLabel(item.contact_type):consultCategoryLabel(item.category))}</strong><span class="status-pill">${escapeHtml(requestStatusLabel(item.response_status||item.request_status))}</span></div><div class="schedule-meta">${escapeHtml(item.kind==="contact"?formatDateLong(item.service_date):formatDateTime(item.created_at))}</div><div style="margin-top:7px">${escapeHtml(item.reason||item.message||"連絡事項なし")}</div></article>`).join("")}
+    function emptyBox(message){return `<div class="list-empty">${escapeHtml(message)}</div>`}
+    function profileRow(label,value){return `<div class="profile-row"><dt>${escapeHtml(label)}</dt><dd>${escapeHtml(value??"未設定")}</dd></div>`}
+    function updateNoticeCounts(count){["noticeCount","mobileNoticeCount"].forEach((id)=>{const el=$(id);el.textContent=String(count);el.hidden=count===0})}
+    function setLoading(show,text="読み込んでいます"){loading.hidden=!show;$("loadingText").textContent=text}
+    function showStatus(message,tone="warning"){const el=$("statusBanner");el.textContent=message;el.dataset.tone=tone;el.hidden=false}
+    function clearStatus(){$("statusBanner").hidden=true}
+    let toastTimer;function showToast(message,error=false){clearTimeout(toastTimer);toast.textContent=message;toast.className=`toast show${error?" error":""}`;toastTimer=setTimeout(()=>toast.className="toast",3600)}
+    function roleLabel(value){return ({self:"本人",family:"家族",guardian:"後見人",supporter:"支援者",demo:"デモ"})[value]||"利用者"}
+    function serviceStatusLabel(value){return ({active:"利用中",paused:"休止中",completed:"利用終了",trial:"体験中"})[value]||value||"未設定"}
+    function serviceModeLabel(value){return ({facility:"通所",home_support:"在宅支援",offsite:"施設外就労",trial:"体験"})[value]||value}
+    function attendanceLabel(value){return ({planned:"予定",confirmed:"確定",present:"出席",absent:"欠席",late:"遅刻",early_leave:"早退",home_support:"在宅支援",offsite:"施設外就労",trial:"体験",cancelled:"取消"})[value]||"予定"}
+    function transportStatusLabel(value){return ({scheduled:"予定",boarded:"乗車済み",alighted:"降車済み",cancelled:"取消",no_show:"未乗車"})[value]||value}
+    function contactTypeLabel(value){return ({absence:"欠席連絡",late:"遅刻連絡",early_leave:"早退連絡",transport_change:"送迎変更",other:"その他の連絡"})[value]||value}
+    function consultCategoryLabel(value){return ({general:"一般相談",support:"支援内容の相談",family:"家族からの相談",wage:"工賃の相談",transport:"送迎の相談",schedule:"利用予定の相談",other:"その他の相談"})[value]||value}
+    function requestStatusLabel(value){return ({new:"受付済み",acknowledged:"確認中",handled:"対応済み",closed:"完了",scheduled:"予定確定",completed:"完了"})[value]||value||"受付済み"}
+    function localDate(){const parts=new Intl.DateTimeFormat("en-CA",{timeZone:"Asia/Tokyo",year:"numeric",month:"2-digit",day:"2-digit"}).formatToParts(new Date());return `${parts.find(p=>p.type==="year").value}-${parts.find(p=>p.type==="month").value}-${parts.find(p=>p.type==="day").value}`}
+    function parseLocalDate(value){return new Date(`${value}T00:00:00+09:00`)}
+    function formatDay(value){return String(parseLocalDate(value).getDate())}
+    function formatWeekday(value){return new Intl.DateTimeFormat("ja-JP",{weekday:"short",timeZone:"Asia/Tokyo"}).format(parseLocalDate(value))}
+    function formatDateShort(value){return new Intl.DateTimeFormat("ja-JP",{month:"numeric",day:"numeric",weekday:"short",timeZone:"Asia/Tokyo"}).format(parseLocalDate(value))}
+    function formatDateLong(value){if(!value)return"";return new Intl.DateTimeFormat("ja-JP",{year:"numeric",month:"long",day:"numeric",weekday:"short",timeZone:"Asia/Tokyo"}).format(parseLocalDate(value))}
+    function formatDateTime(value){if(!value)return"";return new Intl.DateTimeFormat("ja-JP",{year:"numeric",month:"numeric",day:"numeric",hour:"2-digit",minute:"2-digit",timeZone:"Asia/Tokyo"}).format(new Date(value))}
+    function formatMinutes(value){const min=Number(value||0);return `${Math.floor(min/60)}時間${min%60?`${min%60}分`:""}`}
+    function number(value){return new Intl.NumberFormat("ja-JP",{maximumFractionDigits:2}).format(Number(value||0))}
+    function yen(value){return new Intl.NumberFormat("ja-JP",{style:"currency",currency:"JPY",maximumFractionDigits:0}).format(Number(value||0))}
+    function escapeHtml(value){return String(value??"").replace(/[&<>'"]/g,(ch)=>({"&":"&amp;","<":"&lt;",">":"&gt;","'":"&#39;",'"':"&quot;"})[ch])}
+    function iconSvg(name){const paths={calendar:'<path d="M7 3v3m10-3v3M4 9h16M5 5h14a1 1 0 0 1 1 1v14H4V6a1 1 0 0 1 1-1Z"/>',car:'<path d="m5 16-1-1v-4l2-5h12l2 5v4l-1 1M6 16v2m12-2v2M5 12h14M8 15h.01M16 15h.01"/>',bell:'<path d="M6 9a6 6 0 0 1 12 0v4l2 3H4l2-3V9Zm4 10h4"/>',message:'<path d="M5 4h14v12H9l-4 4V4Zm4 5h6m-6 3h4"/>','calendar-x':'<path d="M7 3v3m10-3v3M4 9h16M5 5h14v15H4V6a1 1 0 0 1 1-1Zm6 7 4 4m0-4-4 4"/>',clock:'<path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18Zm0-13v5l3 2"/>',exit:'<path d="M14 8V5H5v14h9v-3m-3-4h9m0 0-3-3m3 3-3 3"/>'};return `<svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><g stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">${paths[name]||paths.message}</g></svg>`}
+  </script>
+</body>
+</html>
