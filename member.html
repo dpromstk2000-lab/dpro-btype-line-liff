@@ -613,13 +613,15 @@
     function renderSummary() {
       const schedules = futureSchedules();
       const next = schedules[0];
+      const today = state.data?.today || localDate();
+      const isToday = Boolean(next && next.service_date === today);
       const unread = (state.data.notices || []).filter((item) => !item.is_read).length;
       const openRequests = (state.data.requests || []).filter((item) => ["new", "acknowledged"].includes(item.response_status)).length
         + (state.data.consultations || []).filter((item) => ["new", "acknowledged", "scheduled"].includes(item.request_status)).length;
       const transport = next ? [next.transport_outbound, next.transport_return].filter(Boolean).length : 0;
       const cards = [
-        { icon:"calendar", label:"次の利用予定", value: next ? formatDateShort(next.service_date) : "予定なし", sub:next ? `${next.planned_start_time || "--:--"}〜${next.planned_end_time || "--:--"}` : "事業所へご確認ください" },
-        { icon:"car", label:"次回の送迎", value: transport ? "送迎あり" : "送迎なし", sub:transport === 2 ? "行き・帰り" : transport === 1 ? "片道" : "" },
+        { icon:"calendar", label:isToday ? "本日の利用" : "次の利用予定", value: next ? formatDateShort(next.service_date) : "予定なし", sub:next ? `${next.planned_start_time || "--:--"}〜${next.planned_end_time || "--:--"}` : "事業所へご確認ください" },
+        { icon:"car", label:isToday ? "本日の送迎" : "次回の送迎", value: transport ? "送迎あり" : "送迎なし", sub:transport === 2 ? "行き・帰り" : transport === 1 ? "片道" : "" },
         { icon:"bell", label:"未読のお知らせ", value:`${unread}件`, sub:unread ? "内容をご確認ください" : "すべて確認済み" },
         { icon:"message", label:"確認中の連絡", value:`${openRequests}件`, sub:openRequests ? "職員が順次確認します" : "未対応の連絡なし" },
       ];
@@ -635,9 +637,12 @@
 
     function renderHome() {
       const next = futureSchedules()[0];
+      const today = state.data?.today || localDate();
+      const isToday = Boolean(next && next.service_date === today);
+      const featuredTitle = isToday ? "本日の利用" : "次の利用予定";
       const recentNotices = (state.data.notices || []).slice(0, 3);
       $("view-home").innerHTML = `
-        <div class="section-head"><div><h2>ホーム</h2><p>次の利用予定と、よく使う連絡です。</p></div></div>
+        <div class="section-head"><div><h2>ホーム</h2><p>${isToday ? "本日の利用状況" : "次の利用予定"}と、よく使う連絡です。</p></div></div>
         <div class="section-card">
           <h3>かんたん連絡</h3>
           <div class="quick-grid" style="margin-top:16px">
@@ -648,7 +653,7 @@
           </div>
         </div>
         <div class="section-card">
-          <div class="card-head"><h3>次の利用予定</h3><button class="btn btn-secondary" type="button" data-view-target="schedule">一覧を見る</button></div>
+          <div class="card-head"><h3>${featuredTitle}</h3><button class="btn btn-secondary" type="button" data-view-target="schedule">一覧を見る</button></div>
           <div style="margin-top:15px">${next ? scheduleItem(next) : emptyBox("今後の利用予定は登録されていません。")}</div>
         </div>
         <div class="section-card">
