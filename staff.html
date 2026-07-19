@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#174a3e">
   <meta name="robots" content="noindex,nofollow">
   <meta name="description" content="就労継続支援B型 スタッフ用スマートフォン画面">
-  <meta name="dpro-version" content="BTYPE-6-STAFF-MOBILE-20260719">
+  <meta name="dpro-version" content="BTYPE-6-R1-STAFF-DEMO-AUTO-LOGIN-20260720">
   <title>DPRO 就労継続支援B型｜スタッフ</title>
   <style>
     :root{
@@ -138,8 +138,8 @@
     $('loginForm').addEventListener('submit',e=>{e.preventDefault();login()});$('clearLogin').addEventListener('click',()=>{$('staffCode').value='';$('staffPin').value='';$('staffCode').focus()});$('togglePin').addEventListener('click',()=>{const input=$('staffPin');input.type=input.type==='password'?'text':'password';$('togglePin').textContent=input.type==='password'?'表示':'隠す'});$('refreshButton').addEventListener('click',loadDashboard);$('logoutButton').addEventListener('click',logout);$('prevDate').addEventListener('click',()=>changeDate(-1));$('nextDate').addEventListener('click',()=>changeDate(1));$('todayButton').addEventListener('click',()=>{state.date=localDate();loadDashboard()});$('serviceDate').addEventListener('change',()=>{state.date=$('serviceDate').value||localDate();loadDashboard()});
     document.addEventListener('click',e=>{const view=e.target.closest('[data-view]');if(view)switchView(view.dataset.view);const go=e.target.closest('[data-go]');if(go)switchView(go.dataset.go);const record=e.target.closest('[data-record-user]');if(record){const u=findUser(record.dataset.recordUser);if(u)openRecord(u)}const ho=e.target.closest('[data-handover-user]');if(ho){const u=findUser(ho.dataset.handoverUser);openHandover(u)}if(e.target.closest('[data-open-handover]'))openHandover();if(e.target.closest('[data-open-incident]'))openIncident();const start=e.target.closest('[data-start-work]');if(start)startWork(start.dataset.startWork);const result=e.target.closest('[data-result-work]');if(result){const a=findAssignment(result.dataset.resultWork);if(a)openWork(a)}const ha=e.target.closest('[data-handover-action]');if(ha)handoverAction(ha.dataset.handoverId,ha.dataset.handoverAction);const ta=e.target.closest('[data-transport-action]');if(ta)transportAction(ta.dataset.passengerId,ta.dataset.transportAction);if(e.target.closest('[data-modal-cancel]'))closeModal()});
     $('modalClose').addEventListener('click',closeModal);$('modalBackdrop').addEventListener('click',e=>{if(e.target===$('modalBackdrop'))closeModal()});$('modalForm').addEventListener('submit',e=>{e.preventDefault();submitModal(e.currentTarget)});
-    const demo=new URLSearchParams(location.search).get('demo')==='1';if(demo&&FACILITY==='dpro_btype_demo'){$('staffCode').value=config.DEMO_STAFF_CODE||'ST-003';$('staffPin').value='1234'}
-    if(state.token){$('loginView').hidden=true;$('appView').hidden=false;$('bottomNav').hidden=false;$('refreshButton').hidden=false;$('logoutButton').hidden=false;loadDashboard()}else $('staffCode').focus();
+    const params=new URLSearchParams(location.search);const demo=params.get('demo')==='1'&&FACILITY==='dpro_btype_demo';const autoDemo=demo&&params.get('auto')==='1';if(demo){$('staffCode').value=config.DEMO_STAFF_CODE||'ST-003';$('staffPin').value='1234'}
+    if(state.token){$('loginView').hidden=true;$('appView').hidden=false;$('bottomNav').hidden=false;$('refreshButton').hidden=false;$('logoutButton').hidden=false;loadDashboard()}else if(autoDemo)login();else $('staffCode').focus();
   })();
   </script>
 </body>

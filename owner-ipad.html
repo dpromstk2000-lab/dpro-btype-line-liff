@@ -7,7 +7,7 @@
   <meta name="robots" content="noindex,nofollow">
   <meta name="description" content="就労継続支援B型 受付・出欠・送迎用iPad画面">
   <title>DPRO 就労継続支援B型｜受付・送迎iPad</title>
-  <meta name="dpro-version" content="BTYPE-5-R4-IPAD-DISABLED-BUTTON-20260719">
+  <meta name="dpro-version" content="BTYPE-5-R5-IPAD-DEMO-AUTO-LOGIN-20260720">
   <style>
     :root{
       --green-950:#103a31;--green-900:#174a3e;--green-800:#1d584a;--green-700:#246b5a;
@@ -204,8 +204,8 @@
     $("modalClose").addEventListener("click",closeModal);$("modalBackdrop").addEventListener("click",e=>{if(e.target===$("modalBackdrop"))closeModal()});$("modalActions").addEventListener("click",e=>{if(e.target.closest("[data-modal-cancel]"))closeModal();const absent=e.target.closest("[data-confirm-absence]");if(absent){const reason=$("modalReason").value.trim();closeModal();attendanceAction(absent.dataset.confirmAbsence,"absent",reason)}const condition=e.target.closest("[data-save-condition]");if(condition)saveCondition(condition.dataset.saveCondition)});
     $("searchButton").addEventListener("click",searchUsers);$("searchQuery").addEventListener("keydown",e=>{if(e.key==="Enter"){e.preventDefault();searchUsers()}});$("contactType").addEventListener("change",updateContactFields);$("phoneForm").addEventListener("submit",submitPhoneContact);updateContactFields();
 
-    const demo=new URLSearchParams(location.search).get("demo")==="1";if(demo&&FACILITY==="dpro_btype_demo")$("adminCode").value="1234";
-    if(state.token){$("loginView").hidden=true;$("appView").hidden=false;$("headerRefresh").hidden=false;$("headerLogout").hidden=false;loadDashboard()}else $("adminCode").focus();
+    const params=new URLSearchParams(location.search);const demo=params.get("demo")==="1"&&FACILITY==="dpro_btype_demo";const autoDemo=demo&&params.get("auto")==="1";if(demo)$("adminCode").value="1234";
+    if(state.token){$("loginView").hidden=true;$("appView").hidden=false;$("headerRefresh").hidden=false;$("headerLogout").hidden=false;loadDashboard()}else if(autoDemo)login("1234");else $("adminCode").focus();
   })();
   </script>
 </body>
