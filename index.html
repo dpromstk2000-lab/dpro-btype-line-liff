@@ -1,0 +1,1531 @@
+<!doctype html>
+<html lang="ja">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#246b5a">
+  <meta name="description" content="就労継続支援B型事業所への利用相談・見学・体験利用のお申込み">
+  <title>DPRO 就労継続支援B型｜利用相談・見学・体験</title>
+  <style>
+    :root {
+      --green-900: #174a3e;
+      --green-800: #1d584a;
+      --green-700: #246b5a;
+      --green-600: #2d7e6b;
+      --green-100: #dce9e3;
+      --green-050: #eef5f1;
+      --cream: #f5f7f2;
+      --white: #ffffff;
+      --ink: #24312d;
+      --muted: #596862;
+      --line: #d8e1dc;
+      --accent: #d98b3a;
+      --accent-dark: #a96120;
+      --danger: #b42318;
+      --danger-bg: #fff1f0;
+      --warning: #8a5317;
+      --warning-bg: #fff7e8;
+      --shadow: 0 14px 38px rgba(23, 74, 62, 0.12);
+      --radius-xl: 24px;
+      --radius-lg: 18px;
+      --radius-md: 13px;
+      --focus: 0 0 0 4px rgba(45, 126, 107, 0.2);
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans JP", sans-serif;
+      color: var(--ink);
+      background: var(--cream);
+      font-synthesis: none;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-width: 320px;
+      background:
+        radial-gradient(circle at 8% 2%, rgba(220, 233, 227, 0.92), transparent 34rem),
+        linear-gradient(180deg, #fbfcfa 0, var(--cream) 38rem);
+      color: var(--ink);
+      font-size: 17px;
+      line-height: 1.75;
+      overflow-x: hidden;
+    }
+    button, input, select, textarea { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { cursor: pointer; }
+    a { color: var(--green-800); }
+    [hidden] { display: none !important; }
+
+    .skip-link {
+      position: fixed;
+      top: 8px;
+      left: 8px;
+      z-index: 1000;
+      padding: 10px 14px;
+      border-radius: 10px;
+      background: var(--white);
+      transform: translateY(-150%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+
+    .site-header {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      border-bottom: 1px solid rgba(216, 225, 220, 0.9);
+      background: rgba(255, 255, 255, 0.94);
+      backdrop-filter: blur(14px);
+    }
+    .header-inner {
+      width: min(1180px, calc(100% - 32px));
+      min-height: 74px;
+      margin: 0 auto;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+    .brand {
+      display: flex;
+      align-items: center;
+      min-width: 0;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--ink);
+    }
+    .brand-mark {
+      width: 44px;
+      height: 44px;
+      flex: 0 0 44px;
+      display: grid;
+      place-items: center;
+      border-radius: 14px;
+      background: var(--green-700);
+      color: var(--white);
+      box-shadow: 0 8px 22px rgba(36, 107, 90, 0.25);
+    }
+    .brand-mark svg { width: 25px; height: 25px; }
+    .brand-copy { min-width: 0; }
+    .brand-name {
+      display: block;
+      overflow: hidden;
+      color: var(--green-900);
+      font-size: 17px;
+      font-weight: 800;
+      line-height: 1.35;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+    .brand-sub {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.4;
+    }
+    .header-call {
+      min-height: 46px;
+      padding: 9px 17px;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      border: 1px solid var(--green-700);
+      border-radius: 999px;
+      color: var(--green-800);
+      background: var(--white);
+      font-size: 15px;
+      font-weight: 800;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .header-call:hover { background: var(--green-050); }
+    .header-call:focus-visible { outline: 0; box-shadow: var(--focus); }
+
+    .hero {
+      width: min(1180px, calc(100% - 32px));
+      margin: 42px auto 0;
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(320px, 0.9fr);
+      align-items: center;
+      gap: 44px;
+    }
+    .eyebrow {
+      width: fit-content;
+      margin: 0 0 16px;
+      padding: 7px 12px;
+      border: 1px solid #bdd3c9;
+      border-radius: 999px;
+      color: var(--green-800);
+      background: rgba(255, 255, 255, 0.82);
+      font-size: 14px;
+      font-weight: 800;
+      letter-spacing: 0.04em;
+    }
+    .hero h1 {
+      margin: 0;
+      color: var(--green-900);
+      font-size: clamp(34px, 5.3vw, 58px);
+      line-height: 1.22;
+      letter-spacing: -0.025em;
+    }
+    .hero h1 strong { color: var(--green-700); }
+    .hero-lead {
+      max-width: 720px;
+      margin: 22px 0 0;
+      color: #41514b;
+      font-size: clamp(18px, 2vw, 21px);
+      line-height: 1.85;
+    }
+    .hero-actions {
+      margin-top: 28px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    .button-primary,
+    .button-secondary {
+      min-height: 54px;
+      padding: 13px 22px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      border-radius: 14px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+    .button-primary {
+      border: 1px solid var(--green-700);
+      color: var(--white);
+      background: var(--green-700);
+      box-shadow: 0 11px 26px rgba(36, 107, 90, 0.24);
+    }
+    .button-primary:hover { background: var(--green-800); }
+    .button-secondary {
+      border: 1px solid var(--line);
+      color: var(--green-900);
+      background: var(--white);
+    }
+    .button-primary:focus-visible,
+    .button-secondary:focus-visible { outline: 0; box-shadow: var(--focus); }
+
+    .hero-panel {
+      position: relative;
+      min-height: 420px;
+      padding: 28px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.72);
+      border-radius: 32px;
+      color: var(--white);
+      background:
+        linear-gradient(145deg, rgba(23, 74, 62, 0.97), rgba(45, 126, 107, 0.9)),
+        var(--green-700);
+      box-shadow: var(--shadow);
+    }
+    .hero-panel::before,
+    .hero-panel::after {
+      content: "";
+      position: absolute;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.08);
+    }
+    .hero-panel::before { width: 240px; height: 240px; right: -80px; top: -90px; }
+    .hero-panel::after { width: 180px; height: 180px; left: -70px; bottom: -70px; }
+    .panel-title {
+      position: relative;
+      z-index: 1;
+      margin: 0 0 20px;
+      font-size: 22px;
+      font-weight: 850;
+    }
+    .support-list {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      padding: 0;
+      display: grid;
+      gap: 13px;
+      list-style: none;
+    }
+    .support-list li {
+      min-height: 62px;
+      padding: 12px 14px;
+      display: flex;
+      align-items: center;
+      gap: 13px;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.09);
+      font-weight: 750;
+    }
+    .support-icon {
+      width: 38px;
+      height: 38px;
+      flex: 0 0 38px;
+      display: grid;
+      place-items: center;
+      border-radius: 12px;
+      color: var(--green-900);
+      background: #eef5f1;
+    }
+    .support-icon svg { width: 21px; height: 21px; }
+    .panel-note {
+      position: relative;
+      z-index: 1;
+      margin: 20px 0 0;
+      padding: 14px 15px;
+      border-radius: 14px;
+      color: #f2f9f5;
+      background: rgba(0, 0, 0, 0.13);
+      font-size: 14px;
+      font-weight: 650;
+    }
+
+    .steps-section,
+    .form-section,
+    .info-section {
+      width: min(1180px, calc(100% - 32px));
+      margin: 70px auto 0;
+    }
+    .section-heading { max-width: 760px; margin-bottom: 24px; }
+    .section-kicker {
+      margin: 0 0 5px;
+      color: var(--green-700);
+      font-size: 14px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+    .section-heading h2 {
+      margin: 0;
+      color: var(--green-900);
+      font-size: clamp(28px, 3.5vw, 40px);
+      line-height: 1.35;
+    }
+    .section-heading p { margin: 10px 0 0; color: var(--muted); }
+
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+    .step-card {
+      min-height: 188px;
+      padding: 24px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+      box-shadow: 0 8px 26px rgba(39, 72, 62, 0.06);
+    }
+    .step-number {
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--green-700);
+      font-size: 16px;
+      font-weight: 850;
+    }
+    .step-card h3 { margin: 16px 0 6px; color: var(--green-900); font-size: 20px; }
+    .step-card p { margin: 0; color: var(--muted); font-size: 15px; }
+
+    .form-shell {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) 330px;
+      align-items: start;
+      gap: 24px;
+    }
+    .form-card,
+    .side-card {
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      background: var(--white);
+      box-shadow: var(--shadow);
+    }
+    .form-card { overflow: hidden; }
+    .form-card-head {
+      padding: 27px 30px 22px;
+      border-bottom: 1px solid var(--line);
+      background: linear-gradient(180deg, #ffffff, #f9fbf9);
+    }
+    .form-card-head h2 { margin: 0; color: var(--green-900); font-size: 27px; line-height: 1.4; }
+    .form-card-head p { margin: 8px 0 0; color: var(--muted); }
+    .type-tabs {
+      margin-top: 20px;
+      padding: 5px;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 6px;
+      border-radius: 15px;
+      background: var(--green-050);
+    }
+    .type-tab {
+      min-height: 54px;
+      padding: 10px 8px;
+      border: 1px solid transparent;
+      border-radius: 11px;
+      color: var(--muted);
+      background: transparent;
+      font-weight: 800;
+    }
+    .type-tab[aria-selected="true"] {
+      border-color: #bdd3c9;
+      color: var(--green-900);
+      background: var(--white);
+      box-shadow: 0 5px 14px rgba(23, 74, 62, 0.1);
+    }
+    .type-tab:focus-visible { outline: 0; box-shadow: var(--focus); }
+
+    .form-body { padding: 30px; }
+    .mode-description {
+      margin: 0 0 25px;
+      padding: 16px 18px;
+      border-left: 5px solid var(--green-600);
+      border-radius: 0 12px 12px 0;
+      color: #35473f;
+      background: var(--green-050);
+      font-weight: 650;
+    }
+    .form-section-title {
+      margin: 30px 0 14px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--green-100);
+      color: var(--green-900);
+      font-size: 20px;
+      line-height: 1.5;
+    }
+    .form-section-title:first-of-type { margin-top: 0; }
+    .field-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
+    .field-grid .full { grid-column: 1 / -1; }
+    .field { min-width: 0; }
+    .field label,
+    .field-label {
+      margin: 0 0 7px;
+      display: block;
+      color: #2e4039;
+      font-size: 16px;
+      font-weight: 800;
+    }
+    .required,
+    .optional {
+      margin-left: 7px;
+      padding: 2px 7px;
+      display: inline-block;
+      vertical-align: 1px;
+      border-radius: 999px;
+      font-size: 11px;
+      font-weight: 850;
+    }
+    .required { color: #8d281f; background: #fde9e7; }
+    .optional { color: #53635d; background: #edf1ef; }
+    input[type="text"],
+    input[type="tel"],
+    input[type="email"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      min-height: 54px;
+      padding: 12px 14px;
+      border: 1.5px solid #bfcac5;
+      border-radius: 12px;
+      color: var(--ink);
+      background: var(--white);
+      font-size: 17px;
+      line-height: 1.5;
+      outline: 0;
+      transition: border-color 0.16s, box-shadow 0.16s, background 0.16s;
+    }
+    textarea { min-height: 130px; resize: vertical; }
+    input:focus,
+    select:focus,
+    textarea:focus { border-color: var(--green-600); box-shadow: var(--focus); }
+    input::placeholder,
+    textarea::placeholder { color: #829089; opacity: 1; }
+    input:disabled,
+    select:disabled,
+    textarea:disabled { color: #6f7b76; background: #eff2f0; cursor: not-allowed; }
+    .field-help { margin: 6px 0 0; color: var(--muted); font-size: 13px; line-height: 1.6; }
+    .field-error { margin: 7px 0 0; color: var(--danger); font-size: 14px; font-weight: 750; }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+    }
+    .radio-card,
+    .check-card {
+      min-height: 54px;
+      padding: 10px 12px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      border: 1.5px solid #c7d1cc;
+      border-radius: 12px;
+      background: var(--white);
+      cursor: pointer;
+    }
+    .radio-card:has(input:checked),
+    .check-card:has(input:checked) { border-color: var(--green-600); background: var(--green-050); }
+    .radio-card:has(input:focus-visible),
+    .check-card:has(input:focus-visible) { box-shadow: var(--focus); }
+    .radio-card input,
+    .check-card input { width: 20px; height: 20px; flex: 0 0 20px; accent-color: var(--green-700); }
+    .radio-card span,
+    .check-card span { font-weight: 750; }
+
+    .schedule-box {
+      padding: 20px;
+      border: 1px solid #cbd8d2;
+      border-radius: 16px;
+      background: #fbfdfb;
+    }
+    .slot-head {
+      margin-top: 18px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+    }
+    .slot-head strong { color: var(--green-900); font-size: 16px; }
+    .slot-duration { color: var(--muted); font-size: 13px; font-weight: 750; }
+    .slot-status {
+      min-height: 48px;
+      margin-top: 10px;
+      padding: 12px 14px;
+      border-radius: 11px;
+      color: var(--muted);
+      background: #f0f3f1;
+      font-size: 14px;
+    }
+    .slot-status.error { color: var(--danger); background: var(--danger-bg); }
+    .slot-status.loading::before {
+      content: "";
+      width: 17px;
+      height: 17px;
+      margin-right: 9px;
+      display: inline-block;
+      vertical-align: -3px;
+      border: 2px solid #bdd0c7;
+      border-top-color: var(--green-700);
+      border-radius: 50%;
+      animation: spin 0.75s linear infinite;
+    }
+    .slots {
+      margin-top: 12px;
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 9px;
+    }
+    .slot-button {
+      min-height: 48px;
+      padding: 8px 6px;
+      border: 1.5px solid #bdcbc4;
+      border-radius: 11px;
+      color: var(--green-900);
+      background: var(--white);
+      font-size: 14px;
+      font-weight: 800;
+    }
+    .slot-button:hover:not(:disabled) { border-color: var(--green-600); background: var(--green-050); }
+    .slot-button[aria-pressed="true"] { border-color: var(--green-700); color: var(--white); background: var(--green-700); }
+    .slot-button:disabled { color: #9ca6a1; text-decoration: line-through; background: #f0f2f1; cursor: not-allowed; }
+    .slot-button:focus-visible { outline: 0; box-shadow: var(--focus); }
+
+    .privacy-box {
+      margin-top: 28px;
+      padding: 18px;
+      border: 1px solid #cbd8d2;
+      border-radius: 14px;
+      background: var(--green-050);
+    }
+    .privacy-box label {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      cursor: pointer;
+      font-weight: 750;
+    }
+    .privacy-box input { width: 22px; height: 22px; flex: 0 0 22px; margin-top: 3px; accent-color: var(--green-700); }
+    .privacy-box small { margin-top: 8px; display: block; color: var(--muted); line-height: 1.7; }
+
+    .form-alert {
+      margin: 20px 0 0;
+      padding: 15px 16px;
+      border: 1px solid #f1c5c1;
+      border-radius: 12px;
+      color: var(--danger);
+      background: var(--danger-bg);
+      font-weight: 750;
+    }
+    .submit-button {
+      width: 100%;
+      min-height: 62px;
+      margin-top: 22px;
+      padding: 14px 20px;
+      border: 0;
+      border-radius: 15px;
+      color: var(--white);
+      background: var(--green-700);
+      box-shadow: 0 12px 28px rgba(36, 107, 90, 0.25);
+      font-size: 19px;
+      font-weight: 850;
+    }
+    .submit-button:hover:not(:disabled) { background: var(--green-800); }
+    .submit-button:focus-visible { outline: 0; box-shadow: var(--focus); }
+    .submit-button:disabled { opacity: 0.65; cursor: wait; }
+    .submit-button.loading::before {
+      content: "";
+      width: 20px;
+      height: 20px;
+      margin-right: 10px;
+      display: inline-block;
+      vertical-align: -4px;
+      border: 2px solid rgba(255,255,255,.4);
+      border-top-color: var(--white);
+      border-radius: 50%;
+      animation: spin .75s linear infinite;
+    }
+
+    .side-stack { position: sticky; top: 96px; display: grid; gap: 18px; }
+    .side-card { padding: 23px; }
+    .side-card h3 { margin: 0 0 13px; color: var(--green-900); font-size: 20px; }
+    .facility-meta { margin: 0; display: grid; gap: 13px; }
+    .facility-meta div { padding-bottom: 12px; border-bottom: 1px solid #e4e9e6; }
+    .facility-meta div:last-child { padding-bottom: 0; border-bottom: 0; }
+    .facility-meta dt { color: var(--muted); font-size: 12px; font-weight: 800; }
+    .facility-meta dd { margin: 3px 0 0; font-weight: 750; overflow-wrap: anywhere; }
+    .notice-card { border-color: #ead4b6; background: var(--warning-bg); box-shadow: none; }
+    .notice-card h3 { color: var(--warning); }
+    .notice-card p { margin: 0; color: #69451f; font-size: 14px; }
+    .line-status {
+      margin-top: 12px;
+      padding: 10px 12px;
+      border-radius: 10px;
+      color: var(--muted);
+      background: #f0f3f1;
+      font-size: 13px;
+      font-weight: 750;
+    }
+    .line-status.connected { color: var(--green-800); background: var(--green-050); }
+
+    .success-card {
+      padding: 38px 30px;
+      text-align: center;
+    }
+    .success-icon {
+      width: 78px;
+      height: 78px;
+      margin: 0 auto 20px;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      color: var(--white);
+      background: var(--green-700);
+      box-shadow: 0 14px 30px rgba(36, 107, 90, 0.25);
+    }
+    .success-icon svg { width: 42px; height: 42px; }
+    .success-card h2 { margin: 0; color: var(--green-900); font-size: 30px; }
+    .success-card > p { margin: 12px auto 0; max-width: 620px; color: var(--muted); }
+    .reference-box {
+      width: min(480px, 100%);
+      margin: 24px auto 0;
+      padding: 17px;
+      border: 1px dashed #93b4a6;
+      border-radius: 14px;
+      background: var(--green-050);
+    }
+    .reference-box span { display: block; color: var(--muted); font-size: 13px; font-weight: 800; }
+    .reference-box strong { margin-top: 3px; display: block; color: var(--green-900); font-size: 23px; letter-spacing: .04em; overflow-wrap: anywhere; }
+    .success-details {
+      width: min(620px, 100%);
+      margin: 20px auto 0;
+      padding: 18px;
+      border-radius: 14px;
+      text-align: left;
+      background: #f7f9f8;
+    }
+    .success-details p { margin: 0 0 8px; }
+    .success-details p:last-child { margin-bottom: 0; }
+    .success-actions { margin-top: 24px; display: flex; justify-content: center; flex-wrap: wrap; gap: 12px; }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+      gap: 22px;
+    }
+    .info-card {
+      padding: 26px;
+      border: 1px solid var(--line);
+      border-radius: var(--radius-lg);
+      background: var(--white);
+    }
+    .info-card h3 { margin: 0 0 12px; color: var(--green-900); font-size: 21px; }
+    .info-card p { margin: 0; color: var(--muted); }
+    details { border-top: 1px solid var(--line); }
+    details:first-of-type { border-top: 0; }
+    summary { padding: 14px 0; color: var(--green-900); font-weight: 800; cursor: pointer; }
+    details p { padding: 0 0 14px; font-size: 15px; }
+
+    .site-footer {
+      margin-top: 80px;
+      padding: 34px 16px calc(34px + env(safe-area-inset-bottom));
+      color: #dce9e3;
+      background: var(--green-900);
+      text-align: center;
+    }
+    .site-footer strong { color: var(--white); }
+    .site-footer p { margin: 5px 0 0; font-size: 13px; }
+
+    .app-loading {
+      position: fixed;
+      inset: 0;
+      z-index: 200;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(245, 247, 242, 0.94);
+    }
+    .loading-card {
+      width: min(360px, 100%);
+      padding: 28px;
+      border: 1px solid var(--line);
+      border-radius: 20px;
+      background: var(--white);
+      box-shadow: var(--shadow);
+      text-align: center;
+    }
+    .spinner {
+      width: 42px;
+      height: 42px;
+      margin: 0 auto 15px;
+      border: 4px solid var(--green-100);
+      border-top-color: var(--green-700);
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+    .loading-card p { margin: 0; font-weight: 750; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .sr-only {
+      position: absolute !important;
+      width: 1px !important;
+      height: 1px !important;
+      padding: 0 !important;
+      margin: -1px !important;
+      overflow: hidden !important;
+      clip: rect(0, 0, 0, 0) !important;
+      white-space: nowrap !important;
+      border: 0 !important;
+    }
+    .honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+
+    @media (max-width: 920px) {
+      .hero { grid-template-columns: 1fr; gap: 28px; }
+      .hero-panel { min-height: auto; }
+      .form-shell { grid-template-columns: 1fr; }
+      .side-stack { position: static; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 680px) {
+      body { font-size: 16px; }
+      .header-inner { width: min(100% - 24px, 1180px); min-height: 68px; }
+      .brand-mark { width: 40px; height: 40px; flex-basis: 40px; }
+      .brand-sub { display: none; }
+      .header-call { width: 44px; min-height: 44px; padding: 0; justify-content: center; border-radius: 13px; }
+      .header-call span { display: none; }
+      .hero,
+      .steps-section,
+      .form-section,
+      .info-section { width: min(100% - 24px, 1180px); }
+      .hero { margin-top: 28px; }
+      .hero-lead { font-size: 17px; }
+      .hero-actions > * { width: 100%; }
+      .hero-panel { padding: 22px; border-radius: 22px; }
+      .steps-section,
+      .form-section,
+      .info-section { margin-top: 52px; }
+      .form-card-head { padding: 22px 18px 18px; }
+      .form-card-head h2 { font-size: 24px; }
+      .type-tabs { grid-template-columns: 1fr; }
+      .type-tab { min-height: 48px; }
+      .form-body { padding: 22px 18px; }
+      .field-grid { grid-template-columns: 1fr; gap: 16px; }
+      .field-grid .full { grid-column: auto; }
+      .choice-grid { grid-template-columns: 1fr; }
+      .schedule-box { padding: 16px; }
+      .slots { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .side-stack { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: 1fr; }
+      .success-card { padding: 30px 18px; }
+      .success-actions > * { width: 100%; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+  </style>
+  <script src="./config.js"></script>
+  <script charset="utf-8" src="https://static.line-scdn.net/liff/edge/2/sdk.js"></script>
+</head>
+<body>
+  <a class="skip-link" href="#application">申込みフォームへ移動</a>
+
+  <div class="app-loading" id="appLoading" role="status" aria-live="polite">
+    <div class="loading-card">
+      <div class="spinner" aria-hidden="true"></div>
+      <p>事業所情報を確認しています</p>
+    </div>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="#top" aria-label="ページ上部へ">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M12 21V8"></path><path d="M7 13c-3.2 0-5-1.8-5-5 3.2 0 5 1.8 5 5Z"></path><path d="M17 10c3.2 0 5-1.8 5-5-3.2 0-5 1.8-5 5Z"></path><path d="M7 21h10"></path>
+          </svg>
+        </span>
+        <span class="brand-copy">
+          <span class="brand-name" id="headerFacilityName">DPRO 就労継続支援B型事業所</span>
+          <span class="brand-sub">利用相談・見学・体験受付</span>
+        </span>
+      </a>
+      <a class="header-call" id="headerPhone" href="#application" aria-label="電話で相談する">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.79 19.79 0 0 1 2.12 4.18 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.9.33 1.78.62 2.63a2 2 0 0 1-.45 2.11L8 9.73a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.85.29 1.73.5 2.63.62A2 2 0 0 1 22 16.92Z"></path></svg>
+        <span>電話で相談</span>
+      </a>
+    </div>
+  </header>
+
+  <main id="top">
+    <section class="hero" aria-labelledby="heroTitle">
+      <div>
+        <p class="eyebrow">ご本人・ご家族・支援者の方へ</p>
+        <h1 id="heroTitle">働くことを、<br><strong>自分のペース</strong>で。</h1>
+        <p class="hero-lead">利用を決める前の相談だけでも大丈夫です。作業内容、通所、送迎、体調面での配慮など、気になることをお聞かせください。</p>
+        <div class="hero-actions">
+          <a class="button-primary" href="#application">相談・見学を申し込む</a>
+          <a class="button-secondary" href="#flow">利用までの流れを見る</a>
+        </div>
+      </div>
+      <aside class="hero-panel" aria-label="相談できる内容">
+        <h2 class="panel-title">このようなご相談を受け付けています</h2>
+        <ul class="support-list">
+          <li><span class="support-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 20h16"></path><path d="M6 20V9l6-5 6 5v11"></path><path d="M9 20v-6h6v6"></path></svg></span>事業所の雰囲気や作業内容を知りたい</li>
+          <li><span class="support-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="8" r="4"></circle><path d="M4 21a8 8 0 0 1 16 0"></path></svg></span>自分に合った働き方を相談したい</li>
+          <li><span class="support-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 11h18"></path><path d="M5 11V6h14v5"></path><path d="M6 19h12"></path><path d="M8 11v8"></path><path d="M16 11v8"></path></svg></span>通所や送迎について確認したい</li>
+          <li><span class="support-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10Z"></path><path d="m9 12 2 2 4-4"></path></svg></span>体調や特性に応じた配慮を相談したい</li>
+        </ul>
+        <p class="panel-note">申込みだけで利用が決定することはありません。事業所から確認のご連絡を差し上げます。</p>
+      </aside>
+    </section>
+
+    <section class="steps-section" id="flow" aria-labelledby="flowTitle">
+      <div class="section-heading">
+        <p class="section-kicker">FLOW</p>
+        <h2 id="flowTitle">利用相談から開始までの流れ</h2>
+        <p>まずは相談や見学から始め、必要な手続きや支援機関との連携を確認します。</p>
+      </div>
+      <div class="steps-grid">
+        <article class="step-card"><span class="step-number">1</span><h3>相談・見学</h3><p>ご希望や現在の状況を伺い、事業所の作業や一日の流れをご説明します。</p></article>
+        <article class="step-card"><span class="step-number">2</span><h3>体験・利用調整</h3><p>必要に応じて体験利用を行い、通所日、送迎、作業、配慮事項を確認します。</p></article>
+        <article class="step-card"><span class="step-number">3</span><h3>手続き・利用開始</h3><p>受給者証や個別支援計画等を確認し、ご本人に合った形で利用を開始します。</p></article>
+      </div>
+    </section>
+
+    <section class="form-section" id="application" aria-labelledby="formTitle">
+      <div class="section-heading">
+        <p class="section-kicker">APPLICATION</p>
+        <h2 id="formTitle">利用相談・見学・体験のお申込み</h2>
+        <p>必須項目をご入力ください。見学・体験の日時は、事業所からの確認連絡後に確定します。</p>
+      </div>
+
+      <div class="form-shell">
+        <div class="form-card" id="formCard">
+          <div class="form-card-head">
+            <h2>ご希望の内容を選択してください</h2>
+            <p>まだ決まっていない場合は「まず相談」を選んでください。</p>
+            <div class="type-tabs" role="tablist" aria-label="申込み種別">
+              <button class="type-tab" type="button" role="tab" aria-selected="true" data-mode="inquiry">まず相談</button>
+              <button class="type-tab" type="button" role="tab" aria-selected="false" data-mode="visit">見学希望</button>
+              <button class="type-tab" type="button" role="tab" aria-selected="false" data-mode="trial">体験利用希望</button>
+            </div>
+          </div>
+
+          <form class="form-body" id="applicationForm" novalidate>
+            <p class="mode-description" id="modeDescription">利用について聞いてみたいことや、不安に感じていることをご入力ください。日時は事業所からご連絡して調整します。</p>
+
+            <div class="honeypot" aria-hidden="true">
+              <label for="website">ウェブサイト</label>
+              <input id="website" name="website" type="text" tabindex="-1" autocomplete="off">
+            </div>
+
+            <h3 class="form-section-title">ご連絡先</h3>
+            <div class="field-grid">
+              <div class="field">
+                <label for="applicantName">お名前<span class="required">必須</span></label>
+                <input id="applicantName" name="applicant_name" type="text" maxlength="100" autocomplete="name" placeholder="例：山田 太郎" required>
+              </div>
+              <div class="field">
+                <label for="applicantKana">ふりがな<span class="optional">任意</span></label>
+                <input id="applicantKana" name="applicant_name_kana" type="text" maxlength="100" autocomplete="off" placeholder="例：やまだ たろう">
+              </div>
+              <div class="field">
+                <label for="relationship">ご本人との関係<span class="optional">任意</span></label>
+                <select id="relationship" name="relationship_to_user">
+                  <option value="">選択してください</option>
+                  <option value="本人">本人</option>
+                  <option value="家族">家族</option>
+                  <option value="相談支援専門員">相談支援専門員</option>
+                  <option value="グループホーム職員">グループホーム職員</option>
+                  <option value="医療・福祉関係者">医療・福祉関係者</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="phone">電話番号<span class="required">必須</span></label>
+                <input id="phone" name="phone" type="tel" maxlength="30" inputmode="tel" autocomplete="tel" placeholder="例：090-1234-5678" required>
+                <p class="field-help">ハイフンあり・なし、全角数字、+81形式でも入力できます。</p>
+              </div>
+              <div class="field full">
+                <label for="email">メールアドレス<span class="optional">任意</span></label>
+                <input id="email" name="email" type="email" maxlength="254" inputmode="email" autocomplete="email" placeholder="例：example@example.jp">
+              </div>
+              <fieldset class="field full" style="border:0;padding:0;margin:0;">
+                <legend class="field-label">希望する連絡方法<span class="required">必須</span></legend>
+                <div class="choice-grid">
+                  <label class="radio-card"><input type="radio" name="preferred_contact_method" value="phone" checked><span>電話</span></label>
+                  <label class="radio-card"><input type="radio" name="preferred_contact_method" value="email"><span>メール</span></label>
+                  <label class="radio-card" id="lineContactCard"><input id="lineContact" type="radio" name="preferred_contact_method" value="line" disabled><span>LINE</span></label>
+                </div>
+                <p class="field-help" id="lineContactHelp">LINE内で本人確認できた場合に選択できます。</p>
+              </fieldset>
+            </div>
+
+            <section id="scheduleSection" hidden>
+              <h3 class="form-section-title" id="scheduleTitle">見学希望日時</h3>
+              <div class="schedule-box">
+                <div class="field">
+                  <label for="bookingDate">希望日<span class="required">必須</span></label>
+                  <input id="bookingDate" name="booking_date" type="date">
+                  <p class="field-help">選択後、現在申込み可能な時間を表示します。</p>
+                </div>
+                <div class="slot-head">
+                  <strong>希望時間</strong>
+                  <span class="slot-duration" id="slotDuration"></span>
+                </div>
+                <div class="slot-status" id="slotStatus" aria-live="polite">希望日を選択してください。</div>
+                <div class="slots" id="slots" role="group" aria-label="希望時間"></div>
+                <input type="hidden" id="selectedTime" name="selected_time">
+              </div>
+            </section>
+
+            <section id="visitExtra" hidden>
+              <h3 class="form-section-title">見学について</h3>
+              <div class="field-grid">
+                <div class="field full">
+                  <label for="attendeeNames">同行される方<span class="optional">任意</span></label>
+                  <input id="attendeeNames" name="attendee_names" type="text" maxlength="200" placeholder="例：母、相談支援専門員">
+                </div>
+              </div>
+            </section>
+
+            <section id="trialExtra" hidden>
+              <h3 class="form-section-title">体験利用について</h3>
+              <div class="field-grid">
+                <div class="field full">
+                  <label for="workTypeRequested">希望・関心のある作業<span class="optional">任意</span></label>
+                  <input id="workTypeRequested" name="work_type_requested" type="text" maxlength="200" placeholder="例：軽作業、パソコン作業、清掃など">
+                </div>
+                <fieldset class="field full" style="border:0;padding:0;margin:0;">
+                  <legend class="field-label">体験時の希望<span class="optional">任意</span></legend>
+                  <div class="choice-grid" style="grid-template-columns:repeat(2,minmax(0,1fr));">
+                    <label class="check-card"><input id="transportRequired" type="checkbox" name="transport_required"><span>送迎を相談したい</span></label>
+                    <label class="check-card"><input id="lunchRequired" type="checkbox" name="lunch_required"><span>昼食を相談したい</span></label>
+                  </div>
+                </fieldset>
+              </div>
+            </section>
+
+            <h3 class="form-section-title">相談内容</h3>
+            <div class="field-grid">
+              <div class="field">
+                <label for="desiredService">相談したいこと<span class="optional">任意</span></label>
+                <select id="desiredService" name="desired_service">
+                  <option value="">選択してください</option>
+                  <option value="利用開始について">利用開始について</option>
+                  <option value="作業内容について">作業内容について</option>
+                  <option value="通所日・利用時間について">通所日・利用時間について</option>
+                  <option value="送迎について">送迎について</option>
+                  <option value="体調・障害特性への配慮">体調・障害特性への配慮</option>
+                  <option value="工賃について">工賃について</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="choiceSupport">就労選択支援の状況<span class="optional">任意</span></label>
+                <select id="choiceSupport" name="employment_choice_support_status">
+                  <option value="not_confirmed">分からない・未確認</option>
+                  <option value="not_used">利用していない</option>
+                  <option value="planned">利用予定</option>
+                  <option value="in_progress">利用中</option>
+                  <option value="completed">利用済み</option>
+                </select>
+              </div>
+              <div class="field full">
+                <label for="consultationOffice">相談支援事業所名<span class="optional">任意</span></label>
+                <input id="consultationOffice" name="consultation_support_office" type="text" maxlength="200" placeholder="利用中・相談中の場合に入力してください">
+              </div>
+              <div class="field full">
+                <label for="inquiryDetail">相談内容・事前に伝えたいこと<span class="optional">任意</span></label>
+                <textarea id="inquiryDetail" name="inquiry_detail" maxlength="2000" placeholder="作業、通所、送迎、体調面での配慮など、確認したいことをご入力ください。"></textarea>
+                <p class="field-help">診断書や受給者証などの画像は、この画面から送信しないでください。</p>
+              </div>
+              <div class="field full">
+                <label for="referralSource">当事業所を知ったきっかけ<span class="optional">任意</span></label>
+                <select id="referralSource" name="referral_source">
+                  <option value="">選択してください</option>
+                  <option value="相談支援事業所からの紹介">相談支援事業所からの紹介</option>
+                  <option value="市区町村・ハローワーク等からの案内">市区町村・ハローワーク等からの案内</option>
+                  <option value="医療機関・福祉施設からの紹介">医療機関・福祉施設からの紹介</option>
+                  <option value="家族・知人からの紹介">家族・知人からの紹介</option>
+                  <option value="ホームページ・検索">ホームページ・検索</option>
+                  <option value="SNS・LINE">SNS・LINE</option>
+                  <option value="その他">その他</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="privacy-box">
+              <label for="privacyAgreed">
+                <input id="privacyAgreed" name="privacy_agreed" type="checkbox" required>
+                <span>入力した個人情報を、利用相談への対応、見学・体験の日程調整、連絡のために事業所が利用することに同意します。</span>
+              </label>
+              <small>入力情報は一般公開されません。支援記録や内部注意事項をこの公開画面に表示することもありません。</small>
+            </div>
+
+            <div class="form-alert" id="formAlert" role="alert" tabindex="-1" hidden></div>
+            <button class="submit-button" id="submitButton" type="submit">利用相談を送信する</button>
+          </form>
+
+          <section class="success-card" id="successCard" tabindex="-1" hidden aria-labelledby="successTitle">
+            <div class="success-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="m5 12 4 4L19 6"></path></svg></div>
+            <h2 id="successTitle">受付が完了しました</h2>
+            <p id="successMessage">内容を確認後、事業所からご連絡します。</p>
+            <div class="reference-box"><span>受付番号</span><strong id="referenceNumber">—</strong></div>
+            <div class="success-details" id="successDetails"></div>
+            <div class="success-actions">
+              <button class="button-primary" id="closeLiffButton" type="button" hidden>LINEに戻る</button>
+              <button class="button-secondary" id="newApplicationButton" type="button">別の内容を申し込む</button>
+            </div>
+          </section>
+        </div>
+
+        <aside class="side-stack">
+          <section class="side-card" aria-labelledby="facilityInfoTitle">
+            <h3 id="facilityInfoTitle">事業所情報</h3>
+            <dl class="facility-meta">
+              <div><dt>事業所名</dt><dd id="facilityName">読み込み中</dd></div>
+              <div><dt>所在地</dt><dd id="facilityAddress">確認中</dd></div>
+              <div><dt>電話番号</dt><dd id="facilityPhone">確認中</dd></div>
+              <div><dt>相談受付時間</dt><dd id="facilityHours">確認中</dd></div>
+              <div><dt>定休日</dt><dd id="facilityClosedDays">確認中</dd></div>
+            </dl>
+            <div class="line-status" id="lineStatus">通常のWEB画面として開いています</div>
+          </section>
+          <section class="side-card notice-card">
+            <h3>お申込み前の確認</h3>
+            <p>この画面で選択した日時は「希望日時」です。事業所からの確認連絡後に確定します。緊急の相談には対応していません。</p>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="info-section" aria-labelledby="infoTitle">
+      <div class="section-heading">
+        <p class="section-kicker">INFORMATION</p>
+        <h2 id="infoTitle">安心してご相談いただくために</h2>
+      </div>
+      <div class="info-grid">
+        <article class="info-card"><h3>利用を決めていなくても大丈夫です</h3><p>見学してから検討したい、どのサービスが合うか分からないという段階でもご相談いただけます。</p></article>
+        <article class="info-card">
+          <h3>よくあるご質問</h3>
+          <details><summary>家族や支援者だけで相談できますか？</summary><p>可能です。ご本人との関係を入力し、確認したい内容をお知らせください。</p></details>
+          <details><summary>体験利用を申し込めば利用できますか？</summary><p>この申込みだけでは確定しません。事業所が状況を確認し、必要な手続きや日程をご案内します。</p></details>
+          <details><summary>書類や診断書は送信できますか？</summary><p>この公開画面では受け付けません。必要な書類は、事業所から安全な提出方法をご案内します。</p></details>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <strong id="footerFacilityName">DPRO 就労継続支援B型事業所</strong>
+    <p>利用相談・見学・体験受付システム</p>
+  </footer>
+
+  <script>
+    "use strict";
+
+    const CONFIG = window.DPRO_BTYPE_CONFIG || {};
+    const API_BASE_URL = String(CONFIG.API_BASE_URL || "").replace(/\/+$/, "");
+    const FACILITY_CODE = String(CONFIG.FACILITY_CODE || "dpro_btype_demo");
+    const MODES = Object.freeze({
+      inquiry: {
+        endpoint: "/public/inquiry",
+        description: "利用について聞いてみたいことや、不安に感じていることをご入力ください。日時は事業所からご連絡して調整します。",
+        submit: "利用相談を送信する",
+        scheduleTitle: "",
+      },
+      visit: {
+        endpoint: "/public/visit",
+        description: "事業所の雰囲気や作業内容をご覧になりたい方はこちらです。希望日時は、事業所からの確認連絡後に確定します。",
+        submit: "見学希望を送信する",
+        scheduleTitle: "見学希望日時",
+      },
+      trial: {
+        endpoint: "/public/trial",
+        description: "実際の作業や一日の流れを体験したい方はこちらです。体験内容や送迎等は事業所から確認します。",
+        submit: "体験利用希望を送信する",
+        scheduleTitle: "体験希望日時",
+      },
+    });
+    const WEEKDAYS = ["日曜日", "月曜日", "火曜日", "水曜日", "木曜日", "金曜日", "土曜日"];
+
+    const state = {
+      mode: "inquiry",
+      facility: null,
+      selectedTime: "",
+      lineUserId: "",
+      liffReady: false,
+      sending: false,
+      slotSequence: 0,
+    };
+
+    const el = {
+      loading: document.getElementById("appLoading"),
+      form: document.getElementById("applicationForm"),
+      formCard: document.getElementById("formCard"),
+      tabs: Array.from(document.querySelectorAll(".type-tab")),
+      modeDescription: document.getElementById("modeDescription"),
+      scheduleSection: document.getElementById("scheduleSection"),
+      scheduleTitle: document.getElementById("scheduleTitle"),
+      bookingDate: document.getElementById("bookingDate"),
+      selectedTime: document.getElementById("selectedTime"),
+      slotStatus: document.getElementById("slotStatus"),
+      slots: document.getElementById("slots"),
+      slotDuration: document.getElementById("slotDuration"),
+      visitExtra: document.getElementById("visitExtra"),
+      trialExtra: document.getElementById("trialExtra"),
+      submit: document.getElementById("submitButton"),
+      alert: document.getElementById("formAlert"),
+      lineContact: document.getElementById("lineContact"),
+      lineContactHelp: document.getElementById("lineContactHelp"),
+      lineStatus: document.getElementById("lineStatus"),
+      success: document.getElementById("successCard"),
+      successMessage: document.getElementById("successMessage"),
+      reference: document.getElementById("referenceNumber"),
+      successDetails: document.getElementById("successDetails"),
+      newApplication: document.getElementById("newApplicationButton"),
+      closeLiff: document.getElementById("closeLiffButton"),
+    };
+
+    document.addEventListener("DOMContentLoaded", init);
+
+    async function init() {
+      if (!API_BASE_URL || !API_BASE_URL.startsWith("https://")) {
+        showFatal("config.jsのAPI_BASE_URLが設定されていません。");
+        return;
+      }
+
+      bindEvents();
+      setDateRange();
+      const queryMode = new URLSearchParams(location.search).get("type");
+      setMode(MODES[queryMode] ? queryMode : "inquiry", false);
+
+      const results = await Promise.allSettled([loadFacility(), initLiff()]);
+      const facilityResult = results[0];
+      if (facilityResult.status === "rejected") {
+        showFatal(facilityResult.reason?.message || "事業所情報を取得できませんでした。");
+        return;
+      }
+      el.loading.hidden = true;
+    }
+
+    function bindEvents() {
+      el.tabs.forEach((tab) => tab.addEventListener("click", () => setMode(tab.dataset.mode, true)));
+      el.bookingDate.addEventListener("change", loadSlots);
+      el.form.addEventListener("submit", submitForm);
+      el.newApplication.addEventListener("click", resetForNewApplication);
+      el.closeLiff.addEventListener("click", () => {
+        if (window.liff?.isInClient?.()) window.liff.closeWindow();
+      });
+      document.getElementById("phone").addEventListener("input", clearAlert);
+    }
+
+    async function loadFacility() {
+      const response = await fetchJson(`${API_BASE_URL}/facility?facility_code=${encodeURIComponent(FACILITY_CODE)}`);
+      if (!response.ok || !response.facility) throw new Error(response.message || "事業所情報を取得できませんでした。");
+      state.facility = response.facility;
+      applyFacility(response.facility);
+      setDateRange();
+    }
+
+    function applyFacility(facility) {
+      const name = facility.facility_name || "DPRO 就労継続支援B型事業所";
+      document.title = `${name}｜利用相談・見学・体験`;
+      ["headerFacilityName", "facilityName", "footerFacilityName"].forEach((id) => {
+        document.getElementById(id).textContent = name;
+      });
+      document.getElementById("facilityAddress").textContent = facility.address || "事業所へお問い合わせください";
+      document.getElementById("facilityPhone").textContent = facility.phone || "事業所へお問い合わせください";
+
+      const phoneLink = document.getElementById("headerPhone");
+      if (facility.phone) {
+        phoneLink.href = `tel:${normalizePhone(facility.phone)}`;
+        phoneLink.setAttribute("aria-label", `${facility.phone}へ電話する`);
+      } else {
+        phoneLink.href = "#application";
+      }
+
+      const settings = facility.settings || {};
+      const open = trimTime(settings.business_open_time);
+      const close = trimTime(settings.business_close_time);
+      document.getElementById("facilityHours").textContent = open && close ? `${open}〜${close}` : "事業所へお問い合わせください";
+      const closed = Array.isArray(settings.closed_weekdays) ? settings.closed_weekdays.map((n) => WEEKDAYS[Number(n)]).filter(Boolean) : [];
+      document.getElementById("facilityClosedDays").textContent = closed.length ? closed.join("・") : "設定なし";
+    }
+
+    async function initLiff() {
+      const liffId = String(CONFIG.LIFF_ID || "").trim();
+      if (!liffId || !window.liff) return;
+      try {
+        await window.liff.init({ liffId });
+        state.liffReady = true;
+        if (window.liff.isLoggedIn()) {
+          const profile = await window.liff.getProfile();
+          state.lineUserId = String(profile?.userId || "");
+          el.lineContact.disabled = !state.lineUserId;
+          el.lineContactHelp.textContent = state.lineUserId ? "LINEでの連絡を希望できます。" : "LINE連携情報を確認できませんでした。";
+          el.lineStatus.textContent = state.lineUserId ? "LINE連携を確認しました" : "LINE内で開いています";
+          el.lineStatus.classList.toggle("connected", Boolean(state.lineUserId));
+        }
+        if (window.liff.isInClient()) el.closeLiff.hidden = false;
+      } catch (error) {
+        console.warn("LIFF initialization failed", error);
+        el.lineStatus.textContent = "LINE連携なしで利用できます";
+      }
+    }
+
+    function setMode(mode, focusForm) {
+      if (!MODES[mode] || state.sending) return;
+      state.mode = mode;
+      state.selectedTime = "";
+      el.selectedTime.value = "";
+      el.tabs.forEach((tab) => {
+        const selected = tab.dataset.mode === mode;
+        tab.setAttribute("aria-selected", String(selected));
+        tab.tabIndex = selected ? 0 : -1;
+      });
+      el.modeDescription.textContent = MODES[mode].description;
+      el.submit.textContent = MODES[mode].submit;
+      el.scheduleSection.hidden = mode === "inquiry";
+      el.visitExtra.hidden = mode !== "visit";
+      el.trialExtra.hidden = mode !== "trial";
+      el.scheduleTitle.textContent = MODES[mode].scheduleTitle;
+      el.bookingDate.required = mode !== "inquiry";
+      resetSlots();
+      clearAlert();
+      history.replaceState(null, "", mode === "inquiry" ? location.pathname : `${location.pathname}?type=${mode}`);
+      if (focusForm) document.getElementById("applicantName").focus({ preventScroll: true });
+    }
+
+    function setDateRange() {
+      const today = getJstDate(new Date());
+      const maxDays = Number(state.facility?.settings?.booking_max_days || 60);
+      el.bookingDate.min = today;
+      el.bookingDate.max = addDays(today, Math.max(1, Math.min(365, maxDays)));
+    }
+
+    async function loadSlots() {
+      resetSlots(false);
+      const date = el.bookingDate.value;
+      if (!date || state.mode === "inquiry") return;
+      const sequence = ++state.slotSequence;
+      el.slotStatus.className = "slot-status loading";
+      el.slotStatus.textContent = "空き時間を確認しています";
+
+      try {
+        const url = new URL(`${API_BASE_URL}/public/available-slots`);
+        url.searchParams.set("facility_code", FACILITY_CODE);
+        url.searchParams.set("booking_type", state.mode);
+        url.searchParams.set("date", date);
+        const result = await fetchJson(url.toString());
+        if (sequence !== state.slotSequence) return;
+        if (!result.ok) throw new Error(result.message || "空き時間を取得できませんでした。");
+
+        el.slotDuration.textContent = result.duration_minutes ? `所要時間の目安 ${formatDuration(result.duration_minutes)}` : "";
+        const slots = Array.isArray(result.slots) ? result.slots : [];
+        if (result.closed || slots.length === 0) {
+          el.slotStatus.className = "slot-status";
+          el.slotStatus.textContent = result.message || "選択できる時間がありません。別の日を選択してください。";
+          return;
+        }
+
+        const availableCount = slots.filter((slot) => slot.available).length;
+        el.slotStatus.className = "slot-status";
+        el.slotStatus.textContent = availableCount ? "希望する時間を1つ選択してください。" : "この日は空きがありません。別の日を選択してください。";
+        slots.forEach((slot) => {
+          const button = document.createElement("button");
+          button.type = "button";
+          button.className = "slot-button";
+          button.textContent = slot.label || slot.time;
+          button.disabled = !slot.available;
+          button.setAttribute("aria-pressed", "false");
+          if (!slot.available) button.setAttribute("aria-label", `${button.textContent} 満席`);
+          button.addEventListener("click", () => selectSlot(button, slot.time));
+          el.slots.appendChild(button);
+        });
+      } catch (error) {
+        if (sequence !== state.slotSequence) return;
+        el.slotStatus.className = "slot-status error";
+        el.slotStatus.textContent = error.message || "空き時間を取得できませんでした。";
+      }
+    }
+
+    function selectSlot(button, time) {
+      state.selectedTime = time;
+      el.selectedTime.value = time;
+      el.slots.querySelectorAll(".slot-button").forEach((item) => item.setAttribute("aria-pressed", String(item === button)));
+      clearAlert();
+    }
+
+    function resetSlots(clearDate = true) {
+      state.slotSequence += 1;
+      state.selectedTime = "";
+      el.selectedTime.value = "";
+      el.slots.replaceChildren();
+      el.slotDuration.textContent = "";
+      el.slotStatus.className = "slot-status";
+      el.slotStatus.textContent = state.mode === "inquiry" ? "" : "希望日を選択してください。";
+      if (clearDate) el.bookingDate.value = "";
+    }
+
+    async function submitForm(event) {
+      event.preventDefault();
+      clearAlert();
+      if (state.sending) return;
+
+      if (!el.form.checkValidity()) {
+        el.form.reportValidity();
+        showAlert("未入力の必須項目があります。入力内容を確認してください。");
+        return;
+      }
+      const phone = document.getElementById("phone").value;
+      if (!/^0\d{9,10}$/.test(normalizePhone(phone))) {
+        showAlert("連絡可能な電話番号を入力してください。", document.getElementById("phone"));
+        return;
+      }
+      if (state.mode !== "inquiry" && !state.selectedTime) {
+        showAlert("希望時間を選択してください。", el.slotStatus);
+        return;
+      }
+
+      const formData = new FormData(el.form);
+      const idempotencyKey = getIdempotencyKey(state.mode);
+      const payload = {
+        facility_code: FACILITY_CODE,
+        applicant_name: formData.get("applicant_name"),
+        applicant_name_kana: formData.get("applicant_name_kana"),
+        phone: formData.get("phone"),
+        email: formData.get("email"),
+        relationship_to_user: formData.get("relationship_to_user"),
+        preferred_contact_method: formData.get("preferred_contact_method"),
+        desired_service: formData.get("desired_service"),
+        inquiry_detail: formData.get("inquiry_detail"),
+        referral_source: formData.get("referral_source"),
+        consultation_support_office: formData.get("consultation_support_office"),
+        employment_choice_support_status: formData.get("employment_choice_support_status"),
+        line_user_id: state.lineUserId || null,
+        privacy_agreed: formData.get("privacy_agreed") === "on",
+        idempotency_key: idempotencyKey,
+        website: formData.get("website"),
+      };
+
+      const date = el.bookingDate.value;
+      if (state.mode === "visit") {
+        payload.start_at = `${date}T${state.selectedTime}:00+09:00`;
+        payload.attendee_names = formData.get("attendee_names");
+      }
+      if (state.mode === "trial") {
+        payload.trial_date = date;
+        payload.start_time = state.selectedTime;
+        payload.transport_required = formData.get("transport_required") === "on";
+        payload.lunch_required = formData.get("lunch_required") === "on";
+        payload.work_type_requested = formData.get("work_type_requested");
+      }
+
+      setSending(true);
+      try {
+        const result = await fetchJson(`${API_BASE_URL}${MODES[state.mode].endpoint}`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "Idempotency-Key": idempotencyKey,
+          },
+          body: JSON.stringify(payload),
+        });
+        if (!result.ok) throw Object.assign(new Error(result.message || "送信できませんでした。"), { status: result.status, code: result.error });
+        sessionStorage.removeItem(idempotencyStorageKey(state.mode));
+        showSuccess(result, date, state.selectedTime);
+      } catch (error) {
+        showAlert(error.message || "通信できませんでした。時間をおいて再度お試しください。");
+        if (["SLOT_FULL", "BOOKING_TOO_SOON", "DUPLICATE_BOOKING"].includes(error.code)) loadSlots();
+      } finally {
+        setSending(false);
+      }
+    }
+
+    async function fetchJson(url, options = {}) {
+      let response;
+      try {
+        response = await fetch(url, { cache: "no-store", ...options });
+      } catch {
+        throw new Error("通信できませんでした。インターネット接続を確認してください。");
+      }
+      let data;
+      try {
+        data = await response.json();
+      } catch {
+        throw new Error("サーバーから正しい応答を取得できませんでした。");
+      }
+      if (!response.ok) {
+        const error = new Error(data.message || `送信できませんでした（${response.status}）`);
+        error.status = response.status;
+        error.code = data.error;
+        throw error;
+      }
+      return data;
+    }
+
+    function showSuccess(result, date, time) {
+      el.form.hidden = true;
+      document.querySelector(".form-card-head").hidden = true;
+      el.success.hidden = false;
+      el.reference.textContent = result.reference_number || "受付済み";
+      el.successMessage.textContent = result.message || "内容を確認後、事業所からご連絡します。";
+
+      const details = [];
+      const modeLabel = state.mode === "visit" ? "見学希望" : state.mode === "trial" ? "体験利用希望" : "利用相談";
+      details.push(`<p><strong>受付内容：</strong>${escapeHtml(modeLabel)}</p>`);
+      if (state.mode !== "inquiry") {
+        const end = state.mode === "trial" ? result.end_time : formatJstTime(result.end_at);
+        details.push(`<p><strong>希望日時：</strong>${escapeHtml(formatJapaneseDate(date))} ${escapeHtml(time)}〜${escapeHtml(end || "")}</p>`);
+      }
+      details.push("<p><strong>次の流れ：</strong>事業所が内容を確認し、電話・メール・LINEのご希望方法でご連絡します。</p>");
+      el.successDetails.innerHTML = details.join("");
+      el.success.focus();
+      el.success.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function resetForNewApplication() {
+      el.form.reset();
+      document.querySelector('input[name="preferred_contact_method"][value="phone"]').checked = true;
+      document.getElementById("choiceSupport").value = "not_confirmed";
+      el.form.hidden = false;
+      document.querySelector(".form-card-head").hidden = false;
+      el.success.hidden = true;
+      setMode("inquiry", false);
+      document.getElementById("application").scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+
+    function setSending(sending) {
+      state.sending = sending;
+      el.submit.disabled = sending;
+      el.submit.classList.toggle("loading", sending);
+      el.submit.textContent = sending ? "送信しています" : MODES[state.mode].submit;
+      el.tabs.forEach((tab) => { tab.disabled = sending; });
+    }
+
+    function showAlert(message, focusTarget = el.alert) {
+      el.alert.textContent = message;
+      el.alert.hidden = false;
+      focusTarget?.focus?.({ preventScroll: true });
+      el.alert.scrollIntoView({ behavior: "smooth", block: "center" });
+    }
+
+    function clearAlert() {
+      el.alert.hidden = true;
+      el.alert.textContent = "";
+    }
+
+    function showFatal(message) {
+      el.loading.innerHTML = `<div class="loading-card"><p style="color:var(--danger);font-size:18px;">${escapeHtml(message)}</p><p style="margin-top:10px;color:var(--muted);font-size:14px;">時間をおいて再読み込みしてください。</p></div>`;
+    }
+
+    function getIdempotencyKey(mode) {
+      const key = idempotencyStorageKey(mode);
+      let value = sessionStorage.getItem(key);
+      if (!value) {
+        value = crypto.randomUUID();
+        sessionStorage.setItem(key, value);
+      }
+      return value;
+    }
+
+    function idempotencyStorageKey(mode) {
+      return `dpro_btype_${FACILITY_CODE}_${mode}_idempotency`;
+    }
+
+    function normalizePhone(value) {
+      let text = String(value || "").replace(/[０-９]/g, (char) => String.fromCharCode(char.charCodeAt(0) - 0xfee0));
+      text = text.replace(/[^0-9+]/g, "");
+      if (text.startsWith("+81")) text = `0${text.slice(3)}`;
+      return text.replace(/\D/g, "");
+    }
+
+    function getJstDate(date) {
+      const parts = new Intl.DateTimeFormat("en-CA", { timeZone: "Asia/Tokyo", year: "numeric", month: "2-digit", day: "2-digit" }).formatToParts(date);
+      const map = Object.fromEntries(parts.map((part) => [part.type, part.value]));
+      return `${map.year}-${map.month}-${map.day}`;
+    }
+
+    function addDays(dateText, days) {
+      const date = new Date(`${dateText}T00:00:00Z`);
+      date.setUTCDate(date.getUTCDate() + days);
+      return date.toISOString().slice(0, 10);
+    }
+
+    function trimTime(value) {
+      const match = String(value || "").match(/^(\d{2}:\d{2})/);
+      return match ? match[1] : "";
+    }
+
+    function formatDuration(minutes) {
+      const value = Number(minutes || 0);
+      if (value >= 60 && value % 60 === 0) return `${value / 60}時間`;
+      if (value > 60) return `${Math.floor(value / 60)}時間${value % 60}分`;
+      return `${value}分`;
+    }
+
+    function formatJapaneseDate(dateText) {
+      const date = new Date(`${dateText}T00:00:00+09:00`);
+      return new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", year: "numeric", month: "long", day: "numeric", weekday: "short" }).format(date);
+    }
+
+    function formatJstTime(value) {
+      if (!value) return "";
+      const date = new Date(value);
+      if (Number.isNaN(date.getTime())) return "";
+      return new Intl.DateTimeFormat("ja-JP", { timeZone: "Asia/Tokyo", hour: "2-digit", minute: "2-digit", hour12: false }).format(date);
+    }
+
+    function escapeHtml(value) {
+      return String(value ?? "").replace(/[&<>'"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;" }[char]));
+    }
+  </script>
+</body>
+</html>
